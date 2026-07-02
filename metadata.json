@@ -1,0 +1,6 @@
+{
+  "name": "Creative One",
+  "description": "Satu Platform • Ribuan Manfaat. Ekosistem digital cerdas terintegrasi untuk seluruh kebutuhan masyarakat Indonesia. Powered by PT Karangsari Creative Solution.",
+  "requestFramePermissions": ["camera", "microphone", "geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
