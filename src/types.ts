@@ -57,9 +57,43 @@ export const MODULES_LIST: ModuleItem[] = [
   { id: "livestock", name: "Creative Livestock", iconName: "Beef", category: "utility", descriptionId: "Pantau kesehatan hewan, jadwal pakan, kartu vaksin, & Qurban digital.", descriptionEn: "Animal health tracker, feeding log, vaccine charts & digital Qurban." },
   { id: "ride", name: "Creative Ride", iconName: "Bike", category: "logistics", descriptionId: "Ojek online, mobil, kurir barang, antar makanan, & pelacakan driver.", descriptionEn: "Bike & car hailing, express logistics, food delivery & live tracking." },
   { id: "rescue", name: "Creative Rescue", iconName: "ShieldAlert", category: "logistics", descriptionId: "Tombol panik darurat, panggil Damkar, SAR, Polisi, & GPS live.", descriptionEn: "Emergency panic button, dispatch Fire, Police or SAR with live GPS." },
-  { id: "pay", name: "Creative Pay", iconName: "CreditCard", category: "commerce", descriptionId: "Dompet QRIS, transfer gratis, pulsa, PLN, PDAM, & pajak desa.", descriptionEn: "QRIS scanner, free bank transfers, utility bills, taxes & top-ups." },
-  { id: "tracker", name: "Creative Tracker", iconName: "MapPin", category: "logistics", descriptionId: "GPS pelacak motor, mobil, HP, anggota keluarga, & geofencing live.", descriptionEn: "Live tracking for motors, cars, phones, family & geofencing." },
-  { id: "ai", name: "Creative AI", iconName: "Bot", category: "ai", descriptionId: "Pusat alat kecerdasan buatan: AI Vision, Translator, Analytic, dll.", descriptionEn: "AI toolbox hub: AI Vision, Translator, Analytic, Coding, & Business." }
+  
+  {
+  id: "pay",
+  name: "Creative Pay",
+  iconName: "CreditCard",
+  category: "commerce",
+  descriptionId: "Dompet QRIS, transfer gratis, pulsa, PLN, PDAM, & pajak desa.",
+  descriptionEn: "QRIS scanner, free bank transfers, utility bills, taxes & top-ups."
+ },
+  
+  {
+  id: "tracker",
+  name: "Creative Tracker",
+  iconName: "MapPin",
+  category: "logistics",
+  descriptionId: "GPS pelacak motor, mobil, HP, anggota keluarga, & geofencing live.",
+  descriptionEn: "Live tracking for motors, cars, phones, family & geofencing."
+  },
+
+  {
+      id: "studio",
+      name: "Creative Studio",
+      iconName: "Palette",
+      category: "commerce",
+      descriptionId: "Desain poster, banner, sertifikat, brosur, kalender & AI Design.",
+      descriptionEn: "Design posters, banners, certificates, brochures, calendars & AI Design."
+  },
+        
+  {
+  id: "ai",
+  name: "Creative AI",
+  iconName: "Bot",
+  category: "ai",
+  descriptionId: "Pusat alat kecerdasan buatan: AI Vision, Translator, Analytic, dll.",
+  descriptionEn: "AI toolbox hub: AI Vision, Translator, Analytic, Coding, & Business."
+  }
+
 ];
 
 export const TRANSLATIONS = {

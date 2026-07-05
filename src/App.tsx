@@ -1,3 +1,9 @@
+import HomeScreen from "./features/dashboard/components/HomeScreen";
+import HomeHeader from "./features/dashboard/components/HomeHeader";
+import WalletPage from "./features/wallet/WalletPage";
+import LoginPage from "./features/auth/LoginPage";
+import ProfilePage from "./features/settings/ProfilePage";
+import StudioPage from "./features/studio/StudioPage";
 import { useState, useEffect, useRef, FormEvent } from "react";
 import {
   Droplet,
@@ -63,6 +69,7 @@ import {
   QrCode,
   Home
 } from "lucide-react";
+
 import LucideIcon from "./components/LucideIcon";
 import RunningText from "./components/RunningText";
 import { createPortal } from "react-dom";
@@ -82,6 +89,9 @@ export default function App() {
   const [fontFamily, setFontFamily] = useState<"inter" | "space-grotesk" | "jetbrains-mono" | "playfair">("inter");
   const [enableTransitions, setEnableTransitions] = useState<boolean>(true);
   
+  // Authentication (sementara)
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const t = TRANSLATIONS[lang];
 
   // System Date / Time State
@@ -104,15 +114,23 @@ export default function App() {
   }, [lang]);
 
   // Active user / simulation state
-  const [user, setUser] = useState<User>({
+  const [user, setUser] = useState<User>(() => {
+  const savedUser = localStorage.getItem("user");
+
+  if (savedUser) {
+    return JSON.parse(savedUser);
+  }
+
+  return {
     id: "U-8821",
-    name: "Asep Saepul",
-    email: "asepsaepulhudaya@gmail.com",
+    name: "Guest",
+    email: "",
     role: "Warga/Umum",
     avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&h=120&q=80",
-    organization: "Desa Karangsari",
-    balance: 750000
-  });
+    organization: "PT Karangsari Creative Solution",
+    balance: 0,
+  };
+});
 
   // Notifications state
   const [notifications, setNotifications] = useState<NotificationItem[]>([
@@ -1585,274 +1603,7 @@ export default function App() {
               )}
 
               {activeTab === "akun" && (
-                <div className="flex-1 flex flex-col overflow-y-auto bg-slate-50 p-4">
-                  <div className="text-center mb-4 shrink-0 flex flex-col items-center">
-                    <div className="w-16 h-16 rounded-full border border-blue-200 p-0.5 bg-white relative">
-                      <img src={user.avatar} className="w-full h-full rounded-full object-cover" alt="User" />
-                      <span className="absolute bottom-0 right-0 w-4 h-4 bg-emerald-500 border-2 border-white rounded-full"></span>
-                    </div>
-                    <h3 className="text-sm font-black text-slate-800 mt-2 leading-tight">{user.name}</h3>
-                    <p className="text-[10px] text-slate-400 font-mono uppercase mt-0.5">{user.id}</p>
-                  </div>
-
-                  {/* Balance / Wallet Card inside profile */}
-                  <div className="bg-gradient-to-br from-[#0c469b] via-[#09357a] to-[#041d4c] text-white p-3.5 rounded-xl shadow-sm mb-4 shrink-0">
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-[9px] uppercase tracking-wider text-blue-200/80 font-semibold font-mono">Creative Pay Balance</span>
-                      <span className="text-[8px] text-amber-400 font-mono font-bold font-sans">SECURITY MODE</span>
-                    </div>
-                    <h4 className="text-xl font-mono text-white font-extrabold tracking-tight">Rp {user.balance.toLocaleString("id-ID")}</h4>
-                    <button 
-                      onClick={() => {
-                        setUser(prev => ({ ...prev, balance: prev.balance + 100000 }));
-                        addAuditLog("Top Up Rp 100,000 via Wallet Simulation Portal");
-                        alert("Simulasi Top Up Rp 100.000 berhasil dimasukkan!");
-                      }}
-                      className="w-full py-1.5 bg-white/10 hover:bg-white/20 border border-white/15 text-[9px] font-bold text-white uppercase tracking-wider rounded-lg mt-2.5 transition active:scale-95 cursor-pointer"
-                    >
-                      TOP UP Rp 100.000
-                    </button>
-                  </div>
-
-                  <div className="space-y-4">
-                    {/* Role selector block */}
-                    <div className="bg-white border border-slate-200 p-3 rounded-xl shadow-3xs">
-                      <label className="text-[10px] uppercase text-slate-400 font-bold block mb-1.5 font-sans">Simulasi Peran Pengguna (Multi-Role)</label>
-                      <select 
-                        value={user.role} 
-                        onChange={(e) => {
-                          const nextRole = e.target.value as Role;
-                          setUser(prev => ({
-                            ...prev,
-                            role: nextRole,
-                            organization: nextRole === "Kepala Desa" ? "Desa Karangsari" : 
-                                          nextRole === "Guru/Siswa" ? "Sekolah Creative Cerdas" :
-                                          nextRole === "Santri/Wali" ? "Pesantren Al-Ikhlas" : "Mitra Creative One"
-                          }));
-                          addAuditLog(`Switched simulation role to ${nextRole}`);
-                        }}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-lg p-1.5 text-xs text-slate-700 focus:outline-hidden"
-                      >
-                        {["Warga/Umum", "Petugas PDAM", "Kepala Desa", "Santri/Wali", "Guru/Siswa", "Petani/Nelayan", "Driver", "Admin Sistem"].map((role) => (
-                          <option key={role} value={role}>{role}</option>
-                        ))}
-                      </select>
-                    </div>
-
-                    {/* Biometrics login block inside phone accounts */}
-                    <div className="bg-white border border-slate-200 p-3 rounded-xl shadow-3xs space-y-2">
-                      <h4 className="text-[10px] uppercase text-slate-400 font-bold block font-sans">Verifikasi Biometrik Instan</h4>
-                      <div className="grid grid-cols-2 gap-2">
-                        <button 
-                          onClick={() => simulateBiometric("face")}
-                          className="py-2 bg-slate-50 hover:bg-[#0c469b] hover:text-white border border-slate-200 text-slate-700 rounded-lg text-[9px] font-bold uppercase flex items-center justify-center gap-1 transition active:scale-95 cursor-pointer"
-                        >
-                          <ScanFace className="w-3.5 h-3.5 shrink-0" />
-                          FACE ID
-                        </button>
-                        <button 
-                          onClick={() => simulateBiometric("finger")}
-                          className="py-2 bg-slate-50 hover:bg-[#0c469b] hover:text-white border border-slate-200 text-slate-700 rounded-lg text-[9px] font-bold uppercase flex items-center justify-center gap-1 transition active:scale-95 cursor-pointer"
-                        >
-                          <Fingerprint className="w-3.5 h-3.5 shrink-0" />
-                          TOUCH ID
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* Ledger Snapshot Sync backup block */}
-                    <div className="bg-white border border-slate-200 p-3 rounded-xl shadow-3xs space-y-2">
-                      <h4 className="text-[10px] uppercase text-slate-400 font-bold block font-sans">Ledger Cloud Sync</h4>
-                      <div className="grid grid-cols-2 gap-2">
-                        <button 
-                          onClick={() => {
-                            addAuditLog("Ledger: Created database snapshot successfully", "SUCCESS");
-                            alert("Database Snapshot Sukses Terbuat! Seluruh data transaksi dienkripsi.");
-                          }}
-                          className="py-2 bg-slate-50 hover:bg-emerald-600 hover:text-white border border-slate-200 text-slate-700 rounded-lg text-[9.5px] font-bold flex items-center justify-center gap-1 transition active:scale-95 cursor-pointer"
-                        >
-                          <Database className="w-3.5 h-3.5 shrink-0" />
-                          BACKUP
-                        </button>
-                        <button 
-                          onClick={() => {
-                            addAuditLog("Ledger: Restored database snapshot successfully", "SUCCESS");
-                            alert("Snapshot Database dipulihkan dari Server Utama Karangsari.");
-                          }}
-                          className="py-2 bg-slate-50 hover:bg-blue-600 hover:text-white border border-slate-200 text-slate-700 rounded-lg text-[9.5px] font-bold flex items-center justify-center gap-1 transition active:scale-95 cursor-pointer"
-                        >
-                          <RefreshCw className="w-3.5 h-3.5 shrink-0" />
-                          RESTORE
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* Appearance & Style Settings Panel */}
-                    <div className="bg-white border border-slate-200 p-3.5 rounded-xl shadow-3xs space-y-4">
-                      <div className="flex items-center gap-1.5 border-b border-slate-100 pb-2">
-                        <Palette className="w-4 h-4 text-[#0c469b]" />
-                        <h4 className="text-[10px] font-extrabold text-slate-800 uppercase tracking-wide">Pengaturan Tampilan & Tema</h4>
-                      </div>
-
-                      {/* 1. Primary Theme Color Select */}
-                      <div className="space-y-2">
-                        <label className="text-[9px] uppercase text-slate-400 font-bold block">Warna Tema Utama</label>
-                        <div className="grid grid-cols-6 gap-1.5">
-                          {Object.entries(THEME_COLORS_MAP).map(([key, item]) => {
-                            const isSelected = themeColor === key;
-                            return (
-                              <button
-                                key={key}
-                                onClick={() => {
-                                  setThemeColor(key as any);
-                                  addAuditLog(`Mengubah warna tema ke ${item.name}`);
-                                }}
-                                className="h-7 rounded-lg flex items-center justify-center border transition-all active:scale-90 relative cursor-pointer"
-                                style={{ 
-                                  backgroundColor: item.hex,
-                                  borderColor: isSelected ? '#ffffff' : 'rgba(0,0,0,0.1)',
-                                  boxShadow: isSelected ? `0 0 0 2px ${item.hex}` : 'none'
-                                }}
-                                title={item.name}
-                                type="button"
-                              >
-                                {isSelected && (
-                                  <span className="w-1.5 h-1.5 bg-white rounded-full shadow-xs"></span>
-                                )}
-                              </button>
-                            );
-                          })}
-                        </div>
-                        <div className="text-[9px] text-slate-500 font-medium">
-                          Tema aktif: <span className="text-[#0c469b] font-bold">{THEME_COLORS_MAP[themeColor]?.name}</span>
-                        </div>
-                      </div>
-
-                      {/* 2. Theme Mode (Light / Sepia / Dark) */}
-                      <div className="space-y-2">
-                        <label className="text-[9px] uppercase text-slate-400 font-bold block">Kecerahan Latar Belakang</label>
-                        <div className="grid grid-cols-3 gap-1.5 bg-slate-50 p-1 rounded-lg border border-slate-200/80">
-                          {(["light", "sepia", "dark"] as const).map((mode) => {
-                            const labels = { light: "Terang", sepia: "Sepia", dark: "Gelap" };
-                            const icons = { 
-                              light: <Sun className="w-3.5 h-3.5" />, 
-                              sepia: <Eye className="w-3.5 h-3.5" />, 
-                              dark: <Moon className="w-3.5 h-3.5" /> 
-                            };
-                            const isSelected = themeMode === mode;
-                            return (
-                              <button
-                                key={mode}
-                                onClick={() => {
-                                  setThemeMode(mode);
-                                  addAuditLog(`Mengubah mode layar ke ${labels[mode]}`);
-                                }}
-                                className={`py-1.5 rounded-md text-[9px] font-bold flex items-center justify-center gap-1 transition-all cursor-pointer ${
-                                  isSelected 
-                                    ? "bg-white text-[#0c469b] shadow-3xs border border-slate-200/50" 
-                                    : "text-slate-500 hover:text-slate-800"
-                                }`}
-                                type="button"
-                              >
-                                {icons[mode]}
-                                {labels[mode]}
-                              </button>
-                            );
-                          })}
-                        </div>
-                      </div>
-
-                      {/* 3. Font Family Selector */}
-                      <div className="space-y-1.5">
-                        <div className="flex items-center gap-1">
-                          <Type className="w-3.5 h-3.5 text-slate-400" />
-                          <label className="text-[9px] uppercase text-slate-400 font-bold block">Gaya Huruf (Font Family)</label>
-                        </div>
-                        <select
-                          value={fontFamily}
-                          onChange={(e) => {
-                            const val = e.target.value as any;
-                            setFontFamily(val);
-                            addAuditLog(`Mengubah gaya huruf ke ${val}`);
-                          }}
-                          className="w-full bg-slate-50 border border-slate-200 rounded-lg p-1.5 text-xs text-slate-700 focus:outline-hidden cursor-pointer font-sans"
-                        >
-                          <option value="inter">Inter (Default Modern)</option>
-                          <option value="space-grotesk">Space Grotesk (Tech / Bold)</option>
-                          <option value="jetbrains-mono">JetBrains Mono (Sistem Khas)</option>
-                          <option value="playfair">Playfair Display (Serif Elegan)</option>
-                        </select>
-                      </div>
-
-                      {/* 4. Font Size Selector */}
-                      <div className="space-y-2">
-                        <label className="text-[9px] uppercase text-slate-400 font-bold block">Ukuran Teks Aplikasi</label>
-                        <div className="grid grid-cols-3 gap-1.5 bg-slate-50 p-1 rounded-lg border border-slate-200/80">
-                          {(["sm", "base", "lg"] as const).map((sz) => {
-                            const labels = { sm: "Kecil", base: "Sedang", lg: "Besar" };
-                            const isSelected = fontSize === sz;
-                            return (
-                              <button
-                                key={sz}
-                                onClick={() => {
-                                  setFontSize(sz);
-                                  addAuditLog(`Mengubah ukuran teks ke ${labels[sz]}`);
-                                }}
-                                className={`py-1 rounded-md text-[9px] font-bold transition-all cursor-pointer ${
-                                  isSelected 
-                                    ? "bg-white text-[#0c469b] shadow-3xs border border-slate-200/50" 
-                                    : "text-slate-500 hover:text-slate-800"
-                                }`}
-                                type="button"
-                              >
-                                {labels[sz]}
-                              </button>
-                            );
-                          })}
-                        </div>
-                      </div>
-
-                      {/* 5. Transisi Animasi */}
-                      <div className="flex items-center justify-between text-xs text-slate-700 border-t border-slate-100 pt-2.5">
-                        <div className="flex flex-col">
-                          <span className="font-semibold text-[11px] text-slate-700">Efek Animasi Transisi</span>
-                          <span className="text-[8px] text-slate-400 font-medium">Aktifkan animasi transisi halus</span>
-                        </div>
-                        <input 
-                          type="checkbox" 
-                          checked={enableTransitions} 
-                          onChange={() => {
-                            setEnableTransitions(!enableTransitions);
-                            addAuditLog(`${!enableTransitions ? 'Mengaktifkan' : 'Menonaktifkan'} animasi transisi`);
-                          }} 
-                          className="w-4 h-4 cursor-pointer"
-                        />
-                      </div>
-                    </div>
-
-                    {/* System toggles */}
-                    <div className="bg-white border border-slate-200 p-3 rounded-xl shadow-3xs space-y-2">
-                      <div className="flex items-center justify-between text-xs text-slate-700">
-                        <span className="font-medium">Sistem Offline Mode</span>
-                        <input 
-                          type="checkbox" 
-                          checked={offlineMode} 
-                          onChange={() => setOfflineMode(!offlineMode)} 
-                          className="w-4 h-4 cursor-pointer"
-                        />
-                      </div>
-                      <div className="flex items-center justify-between text-xs text-slate-700">
-                        <span className="font-medium">Bahasa Indonesia</span>
-                        <input 
-                          type="checkbox" 
-                          checked={lang === "id"} 
-                          onChange={() => setLang(lang === "id" ? "en" : "id")} 
-                          className="w-4 h-4 cursor-pointer"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <ProfilePage user={user} />
               )}
 
               {activeTab === "ai-chat" && renderChatArea(false)}
@@ -2149,53 +1900,7 @@ export default function App() {
 
                 {/* 4. Creative Pay */}
                 {activeModule.id === "pay" && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="bg-white/5 border border-white/5 p-4.5 rounded-xl">
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-teal-400 font-mono mb-2">Simulasi Transfer Aman</h4>
-                      <form onSubmit={handleTransfer} className="space-y-3">
-                        <div className="grid grid-cols-2 gap-2">
-                          <input
-                            type="text"
-                            value={payReceiver}
-                            onChange={(e) => setPayReceiver(e.target.value)}
-                            placeholder="Rekening / No HP"
-                            className="bg-black/40 border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-white"
-                          />
-                          <input
-                            type="number"
-                            value={payAmount}
-                            onChange={(e) => setPayAmount(e.target.value)}
-                            placeholder="Jumlah Rp"
-                            className="bg-black/40 border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-white"
-                          />
-                        </div>
-                        <button type="submit" className="w-full py-2 bg-teal-500 text-black font-bold text-xs uppercase tracking-widest rounded-lg transition">
-                          KIRIM INSTAN
-                        </button>
-                      </form>
-                      {paySuccess && (
-                        <p className="text-[10px] text-emerald-400 text-center mt-2 font-mono">✓ Transfer sukses! Saldo ditarik aman & diverifikasi.</p>
-                      )}
-                    </div>
-
-                    <div className="bg-white/5 border border-white/5 p-4.5 rounded-xl flex flex-col justify-between">
-                      <div>
-                        <h4 className="text-xs font-bold uppercase tracking-wider text-teal-400 font-mono mb-1">Pembayaran QRIS Merchant</h4>
-                        <p className="text-[10.5px] text-white/50 mb-3">Simulasikan pembayaran instan QRIS di kasir Creative Mart atau merchant umum:</p>
-                      </div>
-                      <button 
-                        onClick={handleQrisSimulate}
-                        disabled={qrisScanSim}
-                        className="py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-xs font-bold tracking-widest text-teal-300 transition-all flex items-center justify-center gap-2"
-                      >
-                        <Fingerprint className="w-4 h-4 text-teal-400" />
-                        {qrisScanSim ? "SCANNING & AUTHENTICATING..." : "SIMULASI SCAN QRIS (Rp 25.000)"}
-                      </button>
-                      <div className="text-[9px] text-white/30 text-center mt-2">
-                        Teknologi QRIS terenkripsi ganda (Double Encryption Ledger).
-                      </div>
-                    </div>
-                  </div>
+                   <WalletPage />
                 )}
 
                 {/* 5. Creative Rescue */}
@@ -2838,6 +2543,11 @@ export default function App() {
                   </div>
                 )}
 
+                {/* Creative Studio */}
+                {activeModule.id === "studio" && (
+                   <StudioPage />
+                   )}
+                   
                 {/* 16. Creative AI */}
                 {activeModule.id === "ai" && (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
