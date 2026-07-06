@@ -181,7 +181,7 @@ export default function App() {
     const now = new Date();
     const time = now.toLocaleTimeString("id-ID");
     setAuditLogs(prev => [
-      { timestamp: time, user: user.name, role: user.role.split("/")[0], action, status },
+      { timestamp: time, user: user.name, role: (user.role || "WARGA").split("/")[0], action, status },
       ...prev.slice(0, 8)
     ]);
   };
@@ -1069,7 +1069,7 @@ export default function App() {
               </div>
               <div className="min-w-0 flex-1">
                 <h4 className="text-xs font-black text-slate-800 truncate leading-none mb-1">{user.name}</h4>
-                <p className="text-[9px] text-[#0c469b] font-mono uppercase font-extrabold">{user.role.split("/")[0]}</p>
+                <p className="text-[9px] text-[#0c469b] font-mono uppercase font-extrabold">{(user.role || "WARGA").split("/")[0]}</p>
               </div>
             </div>
           </div>
@@ -1150,7 +1150,7 @@ export default function App() {
                       <div className="flex justify-between items-center mb-2">
                         <span className="text-[9px] text-blue-200 font-mono uppercase tracking-wider">Status Informasi</span>
                         <span className="text-[9px] bg-white/10 px-2 py-0.5 border border-white/10 rounded-full font-bold font-mono text-amber-400">
-                          {user.role.split("/")[0]}
+                          {(user.role || "WARGA").split("/")[0]}
                         </span>
                       </div>
                       <div className="space-y-2 text-[10px]">
@@ -1327,7 +1327,7 @@ export default function App() {
                         <div>
                           <span className="text-[9px] uppercase tracking-wider text-slate-400 font-bold font-mono">Creative Pay Balance</span>
                           <h4 className="text-xl md:text-2xl font-mono font-black text-slate-800 mt-1">
-                            Rp {user.balance.toLocaleString("id-ID")}
+                            Rp {Number(user.balance || 0).toLocaleString("id-ID")}
                           </h4>
                         </div>
                         <span className="text-[8.5px] bg-emerald-50 text-emerald-700 border border-emerald-200 px-1.5 py-0.5 rounded-full font-bold font-mono">AKTIF</span>
@@ -1556,7 +1556,9 @@ export default function App() {
                     >
                       SIMULASI BAYAR Rp 25.000
                     </button>
-                    <p className="text-[9.5px] text-slate-400 font-mono">Sisa Saldo: Rp {user.balance.toLocaleString("id-ID")}</p>
+                    <p className="text-[9.5px] text-slate-400 font-mono">
+                     Sisa Saldo: Rp {Number(user.balance || 0).toLocaleString("id-ID")}
+                    </p>
                   </div>
                 </div>
               )}

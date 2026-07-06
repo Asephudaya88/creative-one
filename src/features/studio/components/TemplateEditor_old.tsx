@@ -143,8 +143,16 @@ const [content, setContent] = useState(
           Preview Desain
         </h3>
 
-        <div className="border rounded-xl p-8 bg-gradient-to-br from-blue-600 to-indigo-800 text-white min-h-[300px] flex flex-col justify-center">
-          <h1 className="text-4xl font-black mb-4 text-center">
+        <div className="border rounded-xl p-8 bg-gradient-to-br from-blue-600 to-indigo-800 text-white min-h-[300px] fle
+        {logo && (
+         <img
+          src={logo}
+          alt="Logo"
+          className="w-28 h-28 object-contain mx-auto mb-6 rounded-full bg-white p-2"
+         /> 
+        )}
+        
+        <h1 className="text-4xl font-black mb-4 text-center">
             {title || "Judul Desain"}
           </h1>
 

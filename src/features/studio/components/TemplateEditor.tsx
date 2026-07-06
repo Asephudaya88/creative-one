@@ -15,21 +15,33 @@ export default function TemplateEditor({ template }: Props) {
 
   const downloadPNG = async () => {
   alert("DOWNLOAD DIKLIK");
+  console.log("STEP 1");
 
   if (!previewRef.current) {
     alert("Preview tidak ditemukan");
     return;
   }
 
-  const canvas = await html2canvas(previewRef.current);
+  try {
+    const canvas = await html2canvas(previewRef.current);
 
-  const link = document.createElement("a");
-  link.download = `${title || "creative-design"}.png`;
-  link.href = canvas.toDataURL("image/png");
-  link.click();
+    alert(`Canvas: ${canvas.width} x ${canvas.height}`);
 
-  alert("PNG berhasil dibuat");
-  
+    const image = canvas.toDataURL("image/png");
+
+    const newTab = window.open();
+
+    if (newTab) {
+      newTab.document.write(
+        `<img src="${image}" style="max-width:100%">`
+      );
+    }
+
+    alert("PNG berhasil dibuat");
+  } catch (err) {
+    console.error(err);
+    alert("ERROR HTML2CANVAS");
+  }
 };
 
   return (
