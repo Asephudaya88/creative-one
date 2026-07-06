@@ -7,19 +7,54 @@ export default function StudioPage() {
   const [selectedTemplate, setSelectedTemplate] = useState("");
 
   const templates = [
-    "Poster",
-    "Banner",
-    "Spanduk",
-    "Baliho",
-    "Kalender",
-    "Sertifikat",
-    "Piagam",
-    "Undangan",
-    "Kartu Nama",
-    "Brosur",
-    "Label Produk",
-    "ID Card",
-  ];
+
+  // Donasi & Dakwah
+  "Santunan Yatim",
+  "Pembangunan Masjid",
+  "Wakaf Al-Quran",
+  "Kajian Akbar",
+  "Tabligh Akbar",
+  "Santunan Dhuafa",
+
+  // Pendidikan
+  "PPDB Sekolah",
+  "Wisuda Tahfidz",
+  "Pengumuman Sekolah",
+  "Sertifikat",
+  "Piagam",
+
+  // Desa
+  "Musyawarah Desa",
+  "Posyandu",
+  "Gotong Royong",
+  "Tagihan Air",
+
+  // UMKM
+  "Promo Produk",
+  "Flash Sale",
+  "Kuliner",
+  "Marketplace",
+  "Jasa",
+
+  // Buku
+  "Sampul Buku",
+  "Sampul Novel",
+  "Buku Keislaman",
+  "Modul Pengajian",
+  "Buku Motivasi",
+
+  // Umum
+  "Poster",
+  "Banner",
+  "Spanduk",
+  "Baliho",
+  "Kalender",
+  "Undangan",
+  "Kartu Nama",
+  "Brosur",
+  "Label Produk",
+  "ID Card",
+];
 
   const filtered = templates.filter((item) =>
     item.toLowerCase().includes(search.toLowerCase())
