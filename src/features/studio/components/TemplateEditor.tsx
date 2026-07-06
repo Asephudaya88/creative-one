@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import html2canvas from "html2canvas";
 
 type Props = {
   template: string;
@@ -8,6 +9,20 @@ export default function TemplateEditor({ template }: Props) {
   const [title, setTitle] = useState(template);
   const [content, setContent] = useState("");
   const [theme, setTheme] = useState("blue");
+  const [logo, setLogo] = useState("");
+
+  const previewRef = useRef<HTMLDivElement>(null);
+
+  const downloadPNG = async () => {
+  if (!previewRef.current) return;
+
+  const canvas = await html2canvas(previewRef.current);
+
+  const link = document.createElement("a");
+  link.download = `${title || "creative-design"}.png`;
+  link.href = canvas.toDataURL("image/png");
+  link.click();
+};
 
   return (
     <div className="bg-white rounded-2xl shadow-xl p-6 mt-6">
@@ -33,7 +48,14 @@ export default function TemplateEditor({ template }: Props) {
         />
 
         <input
-          type="file"
+           type="file"
+            accept="image/*"
+            onChange={(e) => {
+           const file = e.target.files?.[0];
+           if (!file) return;
+
+          setLogo(URL.createObjectURL(file));
+          }}
           className="w-full border border-slate-300 rounded-xl p-3"
         />
 
@@ -59,11 +81,12 @@ export default function TemplateEditor({ template }: Props) {
         <div className="flex gap-3">
           <button className="px-5 py-3 bg-blue-600 text-white rounded-xl font-bold">
             🤖 Generate AI
+            
           </button>
-
-          <button className="px-5 py-3 bg-emerald-600 text-white rounded-xl font-bold">
-            📥 Download PNG
-          </button>
+          <button onClick={downloadPNG} className="px-5 py-3 bg-emerald-600 text-white rounded-xl font-bold">
+              📥 Download PNG
+           </button>
+    
         </div>
       </div>
 
@@ -73,6 +96,7 @@ export default function TemplateEditor({ template }: Props) {
         </h3>
 
         <div
+         ref={previewRef}
           className={`border rounded-xl p-8 text-white min-h-[300px] flex flex-col justify-center ${
             theme === "blue"
               ? "bg-gradient-to-br from-blue-600 to-indigo-800"
@@ -87,6 +111,14 @@ export default function TemplateEditor({ template }: Props) {
               : "bg-gradient-to-br from-slate-800 to-black"
           }`}
         >
+         {logo && (
+          <img
+            src={logo}
+            alt="Logo"
+            className="w-28 h-28 object-contain mx-auto mb-6 rounded-full bg-white p-2"
+          />
+        )}
+
           <h1 className="text-4xl font-black mb-4 text-center">
             {title || "Judul Desain"}
           </h1>
