@@ -14,7 +14,12 @@ export default function TemplateEditor({ template }: Props) {
   const previewRef = useRef<HTMLDivElement>(null);
 
   const downloadPNG = async () => {
-  if (!previewRef.current) return;
+  alert("DOWNLOAD DIKLIK");
+
+  if (!previewRef.current) {
+    alert("Preview tidak ditemukan");
+    return;
+  }
 
   const canvas = await html2canvas(previewRef.current);
 
@@ -22,6 +27,9 @@ export default function TemplateEditor({ template }: Props) {
   link.download = `${title || "creative-design"}.png`;
   link.href = canvas.toDataURL("image/png");
   link.click();
+
+  alert("PNG berhasil dibuat");
+  
 };
 
   return (
