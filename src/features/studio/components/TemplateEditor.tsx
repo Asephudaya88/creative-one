@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import html2canvas from "html2canvas";
+import { toPng } from "html-to-image";
 import { QRCodeCanvas } from "qrcode.react";
 
 type Props = {
@@ -54,33 +54,31 @@ const [logo, setLogo] = useState("");
   const previewRef = useRef<HTMLDivElement>(null);
 
   const downloadPNG = async () => {
-  alert("DOWNLOAD DIKLIK");
-  console.log("STEP 1");
-
   if (!previewRef.current) {
     alert("Preview tidak ditemukan");
     return;
   }
 
   try {
-    const canvas = await html2canvas(previewRef.current);
+    const dataUrl = await toPng(
+      previewRef.current,
+      {
+        pixelRatio: 4,
+        cacheBust: true,
+      }
+    );
 
-    alert(`Canvas: ${canvas.width} x ${canvas.height}`);
+    const link = document.createElement("a");
 
-    const image = canvas.toDataURL("image/png");
+    link.download = `creative-one-${Date.now()}.png`;
+    link.href = dataUrl;
 
-    const newTab = window.open();
+    link.click();
 
-    if (newTab) {
-      newTab.document.write(
-        `<img src="${image}" style="max-width:100%">`
-      );
-    }
-
-    alert("PNG berhasil dibuat");
+    alert("PNG HD berhasil dibuat");
   } catch (err) {
-    console.error(err);
-    alert("ERROR HTML2CANVAS");
+    console.error("ERROR EXPORT:", err);
+    alert(String(err));
   }
 };
 
