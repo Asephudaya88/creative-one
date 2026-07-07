@@ -8,52 +8,100 @@ export default function StudioPage() {
 
   const templates = [
 
-  // Donasi & Dakwah
-  "Santunan Yatim",
+  // 🕌 Yayasan & Dakwah Premium
+  "Santunan Yatim Premium",
+  "Santunan Dhuafa Premium",
+  "Wakaf Al-Quran Premium",
   "Pembangunan Masjid",
-  "Wakaf Al-Quran",
-  "Kajian Akbar",
-  "Tabligh Akbar",
-  "Santunan Dhuafa",
+  "Donasi Renovasi Masjid",
+  "Kajian Akbar Modern",
+  "Tabligh Akbar Gold",
+  "Zakat Fitrah",
+  "Qurban Idul Adha",
+  "Maulid Nabi",
+  "Isra Miraj",
+  "Nuzulul Quran",
 
-  // Pendidikan
-  "PPDB Sekolah",
-  "Wisuda Tahfidz",
+  // 🎓 Sekolah & Pesantren
+  "PPDB Sekolah Premium",
+  "PPDB Pesantren",
+  "Wisuda Tahfidz Premium",
+  "Haflah Akhirussanah",
   "Pengumuman Sekolah",
-  "Sertifikat",
-  "Piagam",
+  "Kenaikan Kelas",
+  "Kelulusan Siswa",
+  "Sertifikat Gold",
+  "Piagam Penghargaan",
+  "Kartu Santri",
+  "Kartu Pelajar",
 
-  // Desa
+  // 🏛️ Desa & Pemerintahan
   "Musyawarah Desa",
-  "Posyandu",
+  "Posyandu Modern",
   "Gotong Royong",
+  "Karang Taruna",
+  "BUMDes",
+  "APBDes Infografis",
+  "Pelayanan Desa",
+  "Pengumuman Desa",
+  "Smart Desa",
   "Tagihan Air",
 
-  // UMKM
-  "Promo Produk",
-  "Flash Sale",
-  "Kuliner",
-  "Marketplace",
-  "Jasa",
+  // 💧 SIMATA Air Barokah
+  "Tagihan Air Bulanan",
+  "Laporan Meter Air",
+  "Pelanggan Baru",
+  "Promo Sambungan Air",
+  "Pemberitahuan Tunggakan",
+  "Kartu Pelanggan Air",
 
-  // Buku
-  "Sampul Buku",
+  // 💳 Creative Pay
+  "Promo Creative Pay",
+  "Promo QRIS",
+  "Cashback Creative Pay",
+  "Top Up Bonus",
+  "Transfer Gratis",
+  "Merchant Partner",
+
+  // 🛒 UMKM Premium
+  "Promo Produk Premium",
+  "Flash Sale Premium",
+  "Kuliner Nusantara",
+  "Marketplace Banner",
+  "Promo Jasa",
+  "Voucher Diskon",
+  "Launching Produk",
+  "Testimoni Pelanggan",
+  "Promo Gratis Ongkir",
+  "Paket Hemat",
+
+  // 🏖️ Wisata & Event
+  "Wisata Alam",
+  "Festival Desa",
+  "Camping Ground",
+  "Open Trip",
+  "Event Organizer",
+  "Gathering Komunitas",
+
+  // 📚 Buku & Media
+  "Sampul Buku Premium",
   "Sampul Novel",
   "Buku Keislaman",
   "Modul Pengajian",
   "Buku Motivasi",
+  "E-Book Cover",
 
-  // Umum
-  "Poster",
-  "Banner",
-  "Spanduk",
-  "Baliho",
-  "Kalender",
-  "Undangan",
-  "Kartu Nama",
-  "Brosur",
+  // 🖨️ Percetakan Premium
+  "Poster Premium",
+  "Banner Premium",
+  "Spanduk Premium",
+  "Baliho Premium",
+  "Kalender Tahunan",
+  "Undangan Digital",
+  "Kartu Nama Premium",
+  "Brosur Lipat Tiga",
   "Label Produk",
-  "ID Card",
+  "ID Card Profesional",
 ];
 
   const filtered = templates.filter((item) =>
