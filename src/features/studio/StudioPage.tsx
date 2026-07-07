@@ -165,8 +165,11 @@ export default function StudioPage() {
 
       {/* Editor */}
       {selectedTemplate && (
-        <TemplateEditor template={selectedTemplate} />
-      )}
+  <TemplateEditor
+    key={selectedTemplate}
+    template={selectedTemplate}
+  />
+     )}
     </div>
   );
 }

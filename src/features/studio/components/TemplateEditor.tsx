@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { toPng } from "html-to-image";
 import { QRCodeCanvas } from "qrcode.react";
 
@@ -50,8 +50,83 @@ export default function TemplateEditor({ template }: Props) {
 
 const [theme, setTheme] = useState("blue");
 const [logo, setLogo] = useState("");
+const [canvasSize, setCanvasSize] = useState("business-card");
 
   const previewRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    console.log("TEMPLATE:", template);
+
+    switch (template) {
+    case "Kartu Nama Premium":
+      setCanvasSize("business-card");
+      break;
+
+    case "ID Card Profesional":
+      setCanvasSize("id-card");
+      break;
+
+    case "Label Produk":
+      setCanvasSize("label-product");
+      break;
+
+    case "Spanduk Premium":
+      setCanvasSize("banner-pengajian");
+      break;
+
+    case "Banner Premium":
+      setCanvasSize("banner-musyawarah");
+      break;
+
+    default:
+      setCanvasSize("business-card");
+  }
+  }, [template]);
+  
+  const sizePresets = {
+  "business-card": {
+    name: "Kartu Nama",
+    width: 1050,
+    height: 640,
+  },
+
+  "id-card": {
+    name: "ID Card",
+    width: 1011,
+    height: 638,
+  },
+
+  "certificate-a4": {
+    name: "Sertifikat A4",
+    width: 3508,
+    height: 2480,
+  },
+
+  "piagam-a5": {
+    name: "Piagam A5",
+    width: 2480,
+    height: 1748,
+  },
+
+  "label-product": {
+    name: "Label Produk",
+    width: 1200,
+    height: 1200,
+  },
+
+  "banner-musyawarah": {
+    name: "Spanduk Musyawarah",
+    width: 4000,
+    height: 1000,
+  },
+
+  "banner-pengajian": {
+    name: "Spanduk Pengajian",
+    width: 4000,
+    height: 1000,
+  }
+};
+  const currentSize =
+  sizePresets[canvasSize as keyof typeof sizePresets];
 
   const downloadPNG = async () => {
   if (!previewRef.current) {
@@ -135,6 +210,24 @@ const [logo, setLogo] = useState("");
             <option value="dark">⚫ Hitam Elegan</option>
           </select>
         </div>
+          
+          <div>
+       <label className="block mb-2 font-semibold text-slate-700">
+         Ukuran Template
+       </label>
+
+       <select
+         value={canvasSize}
+         onChange={(e) => setCanvasSize(e.target.value)}
+         className="w-full border border-slate-300 rounded-xl p-3 text-black"
+       >
+         {Object.entries(sizePresets).map(([key, size]) => (
+           <option key={key} value={key}>
+          {size.name}
+          </option>
+         ))}
+        </select>
+      </div>
 
         <div className="flex gap-3">
           <button className="px-5 py-3 bg-blue-600 text-white rounded-xl font-bold">
@@ -155,8 +248,13 @@ const [logo, setLogo] = useState("");
           {template === "Kartu Nama Premium" && (
       <div
        ref={previewRef}
-      className="bg-gradient-to-r from-black via-slate-900 to-yellow-700 text-white rounded-2xl p-8 shadow-2xl min-h-[240px]"
-  >
+       style={{
+       width: `${currentSize.width}px`,
+       height: `${currentSize.height}px`,
+       overflow: "hidden",
+      }}
+      className="bg-gradient-to-r from-black via-slate-900 to-yellow-700 text-white rounded-2xl p-8 shadow-2xl"
+      >
     <div className="flex justify-between items-start">
       <div>
         <p className="text-yellow-400 font-bold tracking-widest text-xs uppercase">
