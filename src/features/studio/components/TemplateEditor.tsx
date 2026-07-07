@@ -6,10 +6,49 @@ type Props = {
 };
 
 export default function TemplateEditor({ template }: Props) {
-  const [title, setTitle] = useState(template);
-  const [content, setContent] = useState("");
-  const [theme, setTheme] = useState("blue");
-  const [logo, setLogo] = useState("");
+
+  const templateDefaults: Record<string, { title: string; content: string }> = {
+    "Kartu Nama Premium": {
+      title: "ASEP SAEPUL HUDAYA",
+      content: "Direktur PT Karangsari Creative Solution"
+    },
+
+    "Santunan Yatim Premium": {
+      title: "SANTUNAN YATIM & DHUAFA",
+      content: "Mari berbagi kebahagiaan bersama anak-anak yatim dan dhuafa."
+    },
+
+  "Wakaf Al-Quran Premium": {
+    title: "GERAKAN WAKAF AL-QURAN",
+    content: "Salurkan wakaf terbaik Anda untuk generasi Qurani."
+  },
+
+  "PPDB Sekolah Premium": {
+    title: "PENERIMAAN PESERTA DIDIK BARU",
+    content: "Pendaftaran siswa baru telah dibuka."
+  },
+
+  "Label Produk": {
+    title: "MORING PAKIDULAN",
+    content: "Kriuk dan Gurih"
+  },
+
+  "Banner Premium": {
+    title: "CREATIVE ONE",
+    content: "Satu Platform • Ribuan Manfaat"
+  }
+};
+
+  const [title, setTitle] = useState(
+    templateDefaults[template]?.title || template
+);
+
+  const [content, setContent] = useState(
+    templateDefaults[template]?.content || ""
+);
+
+const [theme, setTheme] = useState("blue");
+const [logo, setLogo] = useState("");
 
   const previewRef = useRef<HTMLDivElement>(null);
 
