@@ -1,6 +1,11 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { toPng } from "html-to-image";
 import { QRCodeCanvas } from "qrcode.react";
+
+import { templateConfig } from "../config/templateConfig";
+import { sizePresets } from "../config/sizePresets";
+import { themes } from "../config/themes";
+import { layoutRegistry } from "../layouts/layoutRegistry";
 
 type Props = {
   template: string;

@@ -1,8 +1,8 @@
-import BusinessCardLayout from "../layouts/BusinessCardLayout";
-import BannerLayout from "../layouts/BannerLayout";
-import SpandukLayout from "../layouts/SpandukLayout";
-import IDCardLayout from "../layouts/IDCardLayout";
-import LabelProdukLayout from "../layouts/LabelProdukLayout";
+import BusinessCardLayout from "./BusinessCardLayout";
+import BannerLayout from "./BannerLayout";
+import SpandukLayout from "./SpandukLayout";
+import IDCardLayout from "./IDCardLayout";
+import LabelProdukLayout from "./LabelProdukLayout";
 
 export const layoutRegistry = {
   "business-card": BusinessCardLayout,
