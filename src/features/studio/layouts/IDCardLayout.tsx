@@ -10,22 +10,39 @@ export default function IDCardLayout({
   logo,
 }: Props) {
   return (
-    <div className="w-full h-full rounded-2xl bg-gradient-to-b from-blue-700 to-slate-900 text-white flex flex-col items-center justify-center p-8">
+    <div className="w-full h-full bg-gradient-to-br from-slate-900 to-blue-900 text-white p-8 flex">
 
-      {logo && (
-        <img
-          src={logo}
-          className="w-32 h-32 rounded-full bg-white p-2 object-contain mb-6"
-        />
-      )}
+      <div className="w-1/3 flex items-center justify-center">
+        {logo ? (
+          <img
+            src={logo}
+            alt="Foto"
+            className="w-48 h-48 rounded-full object-cover border-4 border-white"
+          />
+        ) : (
+          <div className="w-48 h-48 rounded-full bg-white/20 flex items-center justify-center text-6xl">
+            👤
+          </div>
+        )}
+      </div>
 
-      <h1 className="text-3xl font-black text-center">
-        {title}
-      </h1>
+      <div className="flex-1 flex flex-col justify-center">
+        <p className="text-blue-300 uppercase text-sm">
+          Creative One ID
+        </p>
 
-      <p className="text-center mt-3">
-        {content}
-      </p>
+        <h1 className="text-4xl font-black mt-2">
+          {title}
+        </h1>
+
+        <p className="text-xl mt-3">
+          {content}
+        </p>
+
+        <div className="mt-6 text-sm text-slate-300">
+          ID : CO-2026-0001
+        </div>
+      </div>
 
     </div>
   );

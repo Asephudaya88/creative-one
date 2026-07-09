@@ -10,27 +10,29 @@ export default function SpandukLayout({
   logo,
 }: Props) {
   return (
-    <div className="h-full w-full bg-gradient-to-r from-green-700 via-emerald-600 to-lime-500 text-white flex items-center justify-between px-16">
+    <div className="h-full w-full bg-gradient-to-r from-blue-900 via-indigo-800 to-purple-800 text-white flex items-center justify-between px-20">
 
-      <div className="max-w-4xl">
+      <div>
+        <p className="uppercase tracking-[6px] text-blue-200 mb-4">
+          EVENT SPESIAL
+        </p>
 
-        <h1 className="text-6xl font-black">
+        <h1 className="text-7xl font-black">
           {title}
         </h1>
 
-        <p className="text-2xl mt-5">
+        <p className="text-3xl mt-5">
           {content}
         </p>
-
       </div>
 
       {logo && (
         <img
           src={logo}
-          className="w-52 h-52 bg-white rounded-full p-3 object-contain"
+          alt="Logo"
+          className="w-64 h-64 object-contain bg-white rounded-3xl p-4"
         />
       )}
-
     </div>
   );
 }

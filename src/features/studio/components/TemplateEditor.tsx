@@ -60,6 +60,17 @@ const [canvasSize, setCanvasSize] = useState("business-card");
   const previewRef = useRef<HTMLDivElement>(null);
   const config =
   templateConfig[template as keyof typeof templateConfig];
+  if (!config) {
+  return (
+    <div className="bg-red-100 p-6 rounded-xl">
+      <h2 className="font-bold text-red-700">
+        Template belum dikonfigurasi:
+      </h2>
+
+      <p>{template}</p>
+    </div>
+  );
+}
 
   const currentSize =
   sizePresets[config.size as keyof typeof sizePresets];
@@ -98,10 +109,6 @@ const [canvasSize, setCanvasSize] = useState("business-card");
   }
   }, [template]);
   
-
-  const currentSize =
-  sizePresets[canvasSize as keyof typeof sizePresets];
-
   const downloadPNG = async () => {
   if (!previewRef.current) {
     alert("Preview tidak ditemukan");
@@ -231,6 +238,7 @@ const [canvasSize, setCanvasSize] = useState("business-card");
            title={title}
            content={content}
            logo={logo}
+           theme={currentTheme}
           />
         </div>
       </div>

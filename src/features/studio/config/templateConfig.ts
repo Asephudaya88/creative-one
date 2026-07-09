@@ -38,6 +38,38 @@ export const templateConfig = {
     theme: "orange",
     titleClass: "text-4xl font-black",
     contentClass: "text-lg",
-  }
+  },
+ 
+  "Santunan Yatim Premium": {
+  layout: "banner",
+  size: "banner-musyawarah",
+  theme: "green",
+  titleClass: "text-5xl font-black",
+  contentClass: "text-xl",
+},
+
+"Santunan Dhuafa Premium": {
+  layout: "banner",
+  size: "banner-musyawarah",
+  theme: "green",
+  titleClass: "text-5xl font-black",
+  contentClass: "text-xl",
+},
+
+"Wakaf Al-Quran Premium": {
+  layout: "banner",
+  size: "banner-musyawarah",
+  theme: "green",
+  titleClass: "text-5xl font-black",
+  contentClass: "text-xl",
+},
+
+"PPDB Sekolah Premium": {
+  layout: "banner",
+  size: "banner-musyawarah",
+  theme: "blue",
+  titleClass: "text-5xl font-black",
+  contentClass: "text-xl",
+},
 
 };
