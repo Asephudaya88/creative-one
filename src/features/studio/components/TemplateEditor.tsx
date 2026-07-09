@@ -1,3 +1,4 @@
+import DynamicQRCode from "./DynamicQRCode";
 import { useState, useRef, useEffect } from "react";
 import { toPng } from "html-to-image";
 import { QRCodeCanvas } from "qrcode.react";
@@ -56,6 +57,9 @@ export default function TemplateEditor({ template }: Props) {
 const [theme, setTheme] = useState("blue");
 const [logo, setLogo] = useState("");
 const [canvasSize, setCanvasSize] = useState("business-card");
+const [qrValue, setQrValue] = useState(
+  "https://creativeone.id"
+);
 
   const previewRef = useRef<HTMLDivElement>(null);
   const config =
@@ -172,6 +176,19 @@ const [canvasSize, setCanvasSize] = useState("business-card");
           }}
           className="w-full border border-slate-300 rounded-xl p-3"
         />
+        <div>
+       <label className="block mb-2 font-semibold text-slate-700">
+        QR Dinamis
+       </label>
+
+       <input
+        type="text"
+        value={qrValue}
+        onChange={(e) => setQrValue(e.target.value)}
+        placeholder="https://creativeone.id"
+        className="w-full border border-slate-300 rounded-xl p-3 text-black"
+       />
+      </div>
 
         <div>
           <label className="block mb-2 font-semibold text-slate-700">
@@ -238,7 +255,7 @@ const [canvasSize, setCanvasSize] = useState("business-card");
            title={title}
            content={content}
            logo={logo}
-           theme={currentTheme}
+           qrValue={qrValue}
           />
         </div>
       </div>

@@ -1,13 +1,16 @@
+import DynamicQRCode from "../components/DynamicQRCode";
 type Props = {
   title: string;
   content: string;
   logo: string;
+  qrValue?: string;
 };
 
 export default function BannerLayout({
   title,
   content,
   logo,
+  qrValue,
 }: Props) {
   return (
     <div className="h-full w-full bg-gradient-to-r from-green-700 via-emerald-600 to-green-500 text-white flex items-center justify-between px-20">
@@ -35,29 +38,34 @@ export default function BannerLayout({
             INFORMASI
           </button>
         </div>
-
+       
       </div>
 
-      <div className="flex flex-col items-center">
+      <div className="w-72 flex flex-col items-center text-center mr-8">
 
-        {logo ? (
-          <img
-            src={logo}
-            alt="Logo"
-            className="w-72 h-72 object-contain bg-white rounded-full p-4 shadow-2xl"
-          />
-        ) : (
-          <div className="w-72 h-72 bg-white/20 rounded-full flex items-center justify-center text-7xl">
-            🎁
-          </div>
-        )}
+     {logo ? (
+     <img
+      src={logo}
+      alt="Logo"
+      className="w-28 h-28 object-contain bg-white rounded-full p-2 shadow-xl"
+    />
+    ) : (
+    <div className="w-28 h-28 bg-white/20 rounded-full flex items-center justify-center text-4xl">
+      🎁
+    </div>
+    )}
 
-        <p className="mt-6 text-xl font-semibold">
-          Creative One Studio
-        </p>
+    <p className="mt-3 text-sm font-semibold">
+    Scan QR Donasi
+    </p>
 
-      </div>
+    {qrValue && (
+    <div className="mt-3 bg-white p-2 rounded-xl shadow-lg">
+      <DynamicQRCode value={qrValue} />
+    </div>
+  )}
 
+    </div>
     </div>
   );
 }

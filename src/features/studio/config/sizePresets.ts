@@ -30,14 +30,15 @@ export const sizePresets = {
   },
 
   "banner-musyawarah": {
-    name: "Spanduk Musyawarah",
-    width: 4000,
-    height: 1000,
-  },
+  name: "Spanduk Musyawarah",
+  width: 1200,
+  height: 600,
+},
 
-  "banner-pengajian": {
-    name: "Spanduk Pengajian",
-    width: 4000,
-    height: 1000,
+"banner-pengajian": {
+  name: "Spanduk Pengajian",
+  width: 1200,
+  height: 600,
+
   },
 };
