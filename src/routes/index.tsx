@@ -1,3 +1,4 @@
+import DonationPage from "../pages/DonationPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 
@@ -20,6 +21,7 @@ export default function AppRouter() {
           <Route path="/foundation" element={<Foundation />} />
           <Route path="/school" element={<School />} />
           <Route path="/studio" element={<Studio />} />
+          <Route path="/donasi" element={<DonationPage />} />
         </Route>
 
       </Routes>

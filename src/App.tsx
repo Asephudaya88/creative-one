@@ -2248,6 +2248,7 @@ export default function App() {
                             <option value="Sponsorship Anak Yatim">Sponsorship Anak Yatim & Dhuafa</option>
                             <option value="Pembangunan Masjid Al-Ikhlas">Pembangunan Masjid Al-Ikhlas Karangsari</option>
                             <option value="Beasiswa Santri Berprestasi">Beasiswa Santri Penghafal Qur'an</option>
+                            <option value="Maulid Nabi 1448 H">Open Donasi Maulid Nabi 1448 H</option>
                           </select>
                         </div>
                         <div>

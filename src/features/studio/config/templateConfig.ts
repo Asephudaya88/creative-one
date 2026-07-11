@@ -72,4 +72,12 @@ export const templateConfig = {
   contentClass: "text-xl",
 },
 
+ "ID Card Portrait Premium": {
+  layout: "id-card-portrait",
+  size: "id-card-portrait",
+  theme: "dark",
+  titleClass: "text-3xl font-black",
+  contentClass: "text-base",
+},
+
 };

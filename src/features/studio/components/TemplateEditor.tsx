@@ -53,9 +53,14 @@ export default function TemplateEditor({ template }: Props) {
   const [content, setContent] = useState(
     templateDefaults[template]?.content || ""
 );
+const [nama, setNama] = useState("ASEP SAEPUL HUDAYA");
+const [ttl, setTtl] = useState("Garut, 17 Februari 1988");
+const [alamat, setAlamat] = useState("Kp. Cigebang RT 004 RW 008");
+const [jabatan, setJabatan] = useState("Direktur");
 
 const [theme, setTheme] = useState("blue");
 const [logo, setLogo] = useState("");
+const [photo, setPhoto] = useState("");
 const [canvasSize, setCanvasSize] = useState("business-card");
 const [qrValue, setQrValue] = useState(
   "https://creativeone.id"
@@ -78,6 +83,13 @@ const [qrValue, setQrValue] = useState(
 
   const currentSize =
   sizePresets[config.size as keyof typeof sizePresets];
+  if (!currentSize) {
+  return (
+    <div className="p-6 text-red-600 font-bold">
+      Ukuran template tidak ditemukan: {config.size}
+    </div>
+  );
+}
 
   const currentTheme =
   themes[config.theme as keyof typeof themes];
@@ -94,6 +106,10 @@ const [qrValue, setQrValue] = useState(
 
     case "ID Card Profesional":
       setCanvasSize("id-card");
+      break;
+
+    case "ID Card Portrait Premium":
+      setCanvasSize("id-card-portrait");
       break;
 
     case "Label Produk":
@@ -163,7 +179,38 @@ const [qrValue, setQrValue] = useState(
           onChange={(e) => setContent(e.target.value)}
           placeholder="Isi konten..."
           className="w-full border border-slate-300 rounded-xl p-3 text-black"
-        />
+          />
+        <input    
+          type="text"
+          value={nama}
+          onChange={(e) => setNama(e.target.value)}
+          placeholder="Nama Lengkap"
+          className="w-full border border-slate-300 rounded-xl p-3 text-black"
+          />
+
+        <input
+          type="text"
+          value={ttl}
+          onChange={(e) => setTtl(e.target.value)}
+          placeholder="Tempat, Tanggal Lahir"
+          className="w-full border border-slate-300 rounded-xl p-3 text-black"
+         />
+
+        <input
+          type="text"
+          value={alamat}
+          onChange={(e) => setAlamat(e.target.value)}
+          placeholder="Alamat"
+          className="w-full border border-slate-300 rounded-xl p-3 text-black"
+         />
+
+        <input
+          type="text"
+          value={jabatan}
+          onChange={(e) => setJabatan(e.target.value)}
+          placeholder="Jabatan"
+          className="w-full border border-slate-300 rounded-xl p-3 text-black"
+          />
 
         <input
            type="file"
@@ -176,6 +223,23 @@ const [qrValue, setQrValue] = useState(
           }}
           className="w-full border border-slate-300 rounded-xl p-3"
         />
+        <div className="mt-4">
+        <label className="block mb-2 font-semibold text-slate-700">
+        Upload Foto
+        </label>
+
+        <input
+        type="file"
+        accept="image/*"
+        onChange={(e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        setPhoto(URL.createObjectURL(file));
+       }}
+       className="w-full border border-slate-300 rounded-xl p-3"
+       />
+       </div>
         <div>
        <label className="block mb-2 font-semibold text-slate-700">
         QR Dinamis
@@ -255,7 +319,12 @@ const [qrValue, setQrValue] = useState(
            title={title}
            content={content}
            logo={logo}
+           photo={photo}
            qrValue={qrValue}
+           nama={nama}
+           ttl={ttl}
+           alamat={alamat}
+           jabatan={jabatan}
           />
         </div>
       </div>

@@ -102,6 +102,7 @@ export default function StudioPage() {
   "Brosur Lipat Tiga",
   "Label Produk",
   "ID Card Profesional",
+  "ID Card Portrait Premium",
 ];
 
   const filtered = templates.filter((item) =>

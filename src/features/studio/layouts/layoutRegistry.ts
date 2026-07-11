@@ -1,3 +1,4 @@
+import PortraitIDCardLayout from "./PortraitIDCardLayout";
 import BusinessCardLayout from "./BusinessCardLayout";
 import BannerLayout from "./BannerLayout";
 import SpandukLayout from "./SpandukLayout";
@@ -9,5 +10,6 @@ export const layoutRegistry = {
   banner: BannerLayout,
   spanduk: SpandukLayout,
   "id-card": IDCardLayout,
+  "id-card-portrait": PortraitIDCardLayout,
   label: LabelProdukLayout,
 };

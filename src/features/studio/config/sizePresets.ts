@@ -4,12 +4,18 @@ export const sizePresets = {
     width: 1050,
     height: 640,
   },
-
+  
   "id-card": {
     name: "ID Card",
     width: 1011,
     height: 638,
   },
+  
+  "id-card-portrait": {
+  name: "ID Card Portrait",
+  width: 638,
+  height: 1011,
+ },
 
   "certificate-a4": {
     name: "Sertifikat A4",
