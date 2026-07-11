@@ -1,3 +1,4 @@
+import DonationPage from "./pages/DonationPage";
 import HomeScreen from "./features/dashboard/components/HomeScreen";
 import HomeHeader from "./features/dashboard/components/HomeHeader";
 import WalletPage from "./features/wallet/WalletPage";
@@ -192,6 +193,7 @@ export default function App() {
 
   // Selected Active Module Modal
   const [activeModule, setActiveModule] = useState<ModuleItem | null>(null);
+  const [showDonationPage, setShowDonationPage] = useState(false);
 
   // Chat AI State
   const [chatMessage, setChatMessage] = useState<string>("");
@@ -667,6 +669,10 @@ export default function App() {
     alert(type === "face" ? t.faceLoginSim : t.fingerprintLoginSim);
   };
 
+  if (showDonationPage) {
+  return <DonationPage />;
+  }
+  
   // Filter modules based on query and categories
   const filteredModules = MODULES_LIST.filter(mod => {
     const nameMatch = mod.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -2263,6 +2269,14 @@ export default function App() {
                         </div>
                         <button type="submit" className="w-full py-2 bg-teal-500 text-black font-bold text-xs uppercase tracking-widest rounded-lg transition hover:bg-teal-400 cursor-pointer">
                           KIRIM DONASI SEKARANG
+                        </button>
+
+                        <button
+                        type="button"
+                        onClick={() => setShowDonationPage(true)}
+                        className="w-full mt-3 py-2 bg-yellow-500 text-black font-bold text-xs rounded-lg"
+                        >
+                       🌙 LIHAT LANDING PAGE MAULID
                         </button>
                       </form>
                     </div>
