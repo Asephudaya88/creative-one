@@ -69,10 +69,34 @@ export default function DonationPage() {
       <section className="bg-gradient-to-r from-green-800 via-green-700 to-emerald-600 text-white py-24">
         <div className="max-w-6xl mx-auto px-6 text-center">
 
-          <p className="uppercase tracking-widest text-yellow-300 mb-3">
-            Yayasan Cahaya Intan Sagara
+          <div className="mb-4">
+         <p className="uppercase tracking-widest text-yellow-300 font-semibold">
+          <div className="flex justify-center items-center gap-8 mb-6">
+
+          <img
+          src="/logo/yayasan.png"
+          alt="Yayasan Cahaya Intan Sagara"
+          className="h-28 w-28 object-contain bg-white rounded-full p-2 shadow-lg"
+          />
+
+          <div className="text-6xl">
+          🤝
+          </div>
+
+          <img
+          src="/logo/alhilal.png"
+          alt="Komunitas Sahabat Al-Hilal Garut 2.0"
+          className="h-28 w-28 object-contain bg-white rounded-full p-2 shadow-lg"
+          />
+          </div>
+          YAYASAN CAHAYA INTAN SAGARA
           </p>
 
+         <p className="text-white/90 text-sm md:text-base mt-1">
+          BERSAMA KOMUNITAS SAHABAT AL-HILAL GARUT 2.0
+          </p>
+         </div>
+    
           <h1 className="text-5xl font-bold mb-6">
             Open Donasi Maulid Nabi Muhammad ﷺ
           </h1>
@@ -87,19 +111,34 @@ export default function DonationPage() {
             href="https://wa.me/6285318169106"
             target="_blank"
             rel="noreferrer"
-            className="bg-yellow-400 text-black px-8 py-4 rounded-xl font-bold inline-block"
-          >
+            className="bg-yellow-400 text-black px-8 py-4 rounded-xl font-bold"
+            >
             💝 Donasi Sekarang
-          </a>
-          <a
-          href="https://wa.me/?text=Ayo%20dukung%20Program%20Maulid%20Nabi"
-          target="_blank"
-          rel="noreferrer"
-           className="inline-block mt-4 text-white underline"
-           >
-          📲 Bagikan ke WhatsApp
+            </a>
+            <a
+            href="https://wa.me/?text=Ayo%20dukung%20Program%20Maulid%20Nabi"
+            target="_blank"
+            rel="noreferrer"
+            className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-xl font-bold inline-block ml-4"
+            >
+            📲 Bagikan WhatsApp
            </a>
            </div>
+           <div className="flex justify-center gap-3 mt-6 flex-wrap">
+
+            <span className="bg-white/20 text-white px-4 py-2 rounded-full text-sm">
+           ✅ Rekening Resmi Yayasan
+            </span>
+
+            <span className="bg-white/20 text-white px-4 py-2 rounded-full text-sm">
+            ✅ QRIS Resmi
+            </span>
+
+            <span className="bg-white/20 text-white px-4 py-2 rounded-full text-sm">
+           🤝 Amanah & Transparan
+            </span>
+
+            </div>
            </section>
        
         {/* Countdown Maulid */}
