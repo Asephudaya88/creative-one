@@ -232,7 +232,13 @@ export default function DonationPage() {
 
       <div className="grid md:grid-cols-2 gap-6">
 
-      <div className="bg-green-50 border border-green-200 rounded-xl p-6">
+      <div className="bg-green-50 border border-green-200 rounded-xl p-6 flex flex-col items-center text-center pt-25">
+        <img
+        src="/payment/mandiri.png"
+        alt="Bank Mandiri"
+        className="h-25 object-contain"
+        />
+
         <h3 className="font-bold text-green-700 mb-2">
           Bank Mandiri 
         </h3>
