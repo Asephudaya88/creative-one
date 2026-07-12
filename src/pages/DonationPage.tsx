@@ -111,7 +111,7 @@ export default function DonationPage() {
             href="https://wa.me/6285318169106"
             target="_blank"
             rel="noreferrer"
-            className="bg-yellow-400 text-black px-8 py-4 rounded-xl font-bold"
+            className="bg-yellow-400 text-black px-8 py-4 rounded-xl font-bold animate-pulse"
             >
             💝 Donasi Sekarang
             </a>
@@ -119,7 +119,7 @@ export default function DonationPage() {
             href="https://wa.me/?text=Ayo%20dukung%20Program%20Maulid%20Nabi"
             target="_blank"
             rel="noreferrer"
-            className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-xl font-bold inline-block ml-4"
+            className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-xl font-bold inline-block ml-4 animate-pulse"
             >
             📲 Bagikan WhatsApp
            </a>
@@ -779,6 +779,33 @@ export default function DonationPage() {
         >
           Hubungi Panitia
         </a>
+       <div className="flex justify-center gap-6 mt-6">
+       
+  <a
+    href="https://wa.me/6285318169106"
+    target="_blank"
+    rel="noreferrer"
+  >
+    <img
+      src="/logo/wa.png"
+      alt="WhatsApp"
+      className="w-12 h-12 hover:scale-110 transition-all duration-300"
+      className="w-12 h-12 hover:scale-110 animate-pulse transition-all duration-300"
+    />
+  </a>
+
+  <a
+    href="mailto:yayasancahayaintansagara@gmail.com"
+  >
+    <img
+      src="/logo/email.png"
+      alt="Email"
+      className="w-12 h-12 hover:scale-110 transition-all duration-300"
+      className="w-12 h-12 hover:scale-110 animate-pulse transition-all duration-300"
+    />
+  </a>
+
+</div>
       </section>
         <a
        href="https://wa.me/6285318169106"
@@ -805,25 +832,58 @@ export default function DonationPage() {
     >
     💬
     </a>
-    <footer className="bg-slate-900 text-white py-12 mt-20">
+    <footer className="bg-slate-300 text-white py-12 mt-10">
   <div className="max-w-6xl mx-auto px-6 text-center">
 
-    <h3 className="text-2xl font-bold">
-      Yayasan Cahaya Intan Sagara
-    </h3>
-
-    <p className="mt-3 text-slate-300">
-      Desa Awassagara, Kecamatan Cikelet,
-      Kabupaten Garut
+    <p className="mt-3 text-slate-200 text-sm">
     </p>
+   <footer className="bg-green-900 text-white mt-5">
 
-    <p className="mt-2">
-      📞 0853-1816-9106
-    </p>
+  <div className="max-w-6xl mx-auto px-6 py-12">
 
-    <p className="mt-6 text-slate-500 text-sm">
-      © 2026 Creative One • Donation Landing Page Premium
-    </p>
+    <div className="grid md:grid-cols-3 gap-8">
+
+      <div>
+        <h3 className="font-bold text-xl mb-4">
+          Yayasan Cahaya Intan Sagara
+        </h3>
+
+        <p className="text-green-100">
+          Bersama Komunitas Sahabat Al-Hilal Garut 2.0
+        </p>
+      </div>
+
+      <div>
+        <h3 className="font-bold text-xl mb-4">
+          Kontak
+        </h3>
+
+        <p>📞 0853-1816-9106</p>
+        <p>📍 Garut, Jawa Barat</p>
+      </div>
+
+      <div>
+        <h3 className="font-bold text-xl mb-4">
+          Creative One
+        </h3>
+
+        <p>Satu Platform • Ribuan Manfaat</p>
+        <p>Powered by PT Karangsari Creative Solution</p>
+      </div>
+
+    </div>
+
+    <div className="border-t border-green-300 mt-8 pt-6 text-center text-green-500">
+
+      © 2026 Yayasan Cahaya Intan Sagara
+      <br />
+      Open Donasi Maulid Nabi Muhammad ﷺ
+
+    </div>
+
+  </div>
+
+</footer>
 
   </div>
 </footer>
