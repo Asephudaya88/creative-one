@@ -153,23 +153,22 @@ const dokumentasiKegiatan = [
 
 </div>
           <a
-            href="https://wa.me/6285318169106"
-            target="_blank"
-            rel="noreferrer"
-            className="bg-yellow-400 text-black px-8 py-4 rounded-xl font-bold animate-pulse"
-            >
-            💝 Donasi Sekarang
-            </a>
-            <a
-            href="https://wa.me/?text=Ayo%20dukung%20Program%20Maulid%20Nabi"
-            target="_blank"
-            rel="noreferrer"
-            className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-xl font-bold inline-block ml-4 animate-pulse"
-            >
-            📲 Bagikan WhatsApp
-           </a>
-           </div>
-           <div className="flex justify-center gap-3 mt-6 flex-wrap">
+            href="#rekening-donasi"
+            className="bg-yellow-400 text-black px-8 py-4 rounded-xl font-bold animate-pulse hover:scale-105 transition-all duration-300"
+             >
+             💝 Donasi Sekarang
+             </a>
+
+               <a
+               href="https://wa.me/?text=Ayo%20dukung%20Program%20Maulid%20Nabi"
+               target="_blank"
+               rel="noreferrer"
+               className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-xl font-bold inline-block ml-4 animate-pulse"
+                >
+               📲 Bagikan WhatsApp
+               </a>
+               </div>
+              <div className="flex justify-center gap-3 mt-6 flex-wrap">
 
             <span className="bg-white/20 text-white px-4 py-2 rounded-full text-sm">
            ✅ Rekening Resmi Yayasan
@@ -294,7 +293,10 @@ const dokumentasiKegiatan = [
 </section>
 
    {/* Rekening Donasi */}
-<section className="max-w-6xl mx-auto px-6 py-10">
+<section
+  id="rekening-donasi"
+   className="max-w-6xl mx-auto px-6 py-10"
+>
 
   <div className="bg-white rounded-2xl shadow-xl p-8">
 
