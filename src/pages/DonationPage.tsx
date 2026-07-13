@@ -1,4 +1,29 @@
 import { useState } from "react";
+const galeriKegiatan = [
+  "/galeri/kegiatan/1.jpeg",
+  "/galeri/kegiatan/2.jpeg",
+  "/galeri/kegiatan/3.jpeg",
+];
+
+const dokumentasiKegiatan = [
+  {
+    foto: "/galeri/dokumentasi/1.jpg",
+    judul: "Santunan Anak Yatim",
+    deskripsi: "Kegiatan santunan dan berbagi kebahagiaan.",
+  },
+
+  {
+    foto: "/galeri/dokumentasi/2.jpg",
+    judul: "Pengajian Umum",
+    deskripsi: "Kajian dan tausiyah untuk masyarakat.",
+  },
+
+  {
+    foto: "/galeri/dokumentasi/3.jpg",
+    judul: "Maulid Nabi",
+    deskripsi: "Memperingati kelahiran Nabi Muhammad ﷺ.",
+  },
+];
 export default function DonationPage() {
     const [preview, setPreview] = useState<string | null>(null);
     const [nominal, setNominal] = useState("");
@@ -31,32 +56,6 @@ export default function DonationPage() {
   "❤️ Keluarga Ahmad berdonasi Rp 500.000",
   "❤️ Hamba Allah berdonasi Rp 50.000",
 ];
-<section className="max-w-6xl mx-auto px-1000 mb-1000">
-  <div className="bg-white rounded-2xl shadow-lg p-2000">
-    <h2 className="text-xl font-bold text-center mb-1000">
-      🕒 Donasi Terbaru
-    </h2>
-
-    <div className="space-y-2">
-      {donaturLive.map((item, index) => (
-        <div
-          key={index}
-          className="bg-gray-50 rounded-lg px-4 py-3 border"
-        >
-          {item}
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-      const galeriKegiatan = [
-     "/galeri1.jpg",
-     "/galeri2.jpg",
-     "/galeri3.jpg",
-     "/galeri4.jpg",
-     "/galeri5.jpg",
-     "/galeri6.jpg",
-   ];
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -70,7 +69,7 @@ export default function DonationPage() {
         <div className="max-w-6xl mx-auto px-6 text-center">
 
           <div className="mb-4">
-         <p className="uppercase tracking-widest text-yellow-300 font-semibold">
+         <div className="uppercase tracking-widest text-yellow-300 font-semibold">
           <div className="flex justify-center items-center gap-8 mb-6">
 
           <img
@@ -88,9 +87,9 @@ export default function DonationPage() {
           alt="Komunitas Sahabat Al-Hilal Garut 2.0"
           className="h-28 w-28 object-contain bg-white rounded-full p-2 shadow-lg"
           />
-          </div>
+          <div className="font-bold text-xl">
           YAYASAN CAHAYA INTAN SAGARA
-          </p>
+          </div>
 
          <p className="text-white/90 text-sm md:text-base mt-1">
           BERSAMA KOMUNITAS SAHABAT AL-HILAL GARUT 2.0
@@ -139,103 +138,111 @@ export default function DonationPage() {
             </span>
 
             </div>
+            </div>
+            </div>
            </section>
-       
+        
         {/* Countdown Maulid */}
-       <section className="max-w-6xl mx-auto px-6 py-8">
+          <section className="max-w-6xl mx-auto px-6 py-8">
 
-      <div className="bg-white rounded-2xl shadow-xl p-6 text-center">
+        <div className="bg-white rounded-2xl shadow-xl p-6 text-center">
 
-      <p className="text-sm uppercase tracking-widest text-green-600 mb-2">
-      Menuju Acara Maulid
-      </p>
+        <p className="text-sm uppercase tracking-widest text-green-600 mb-2">
+        Menuju Acara Maulid
+    </p>
 
-      <h2 className="text-2xl font-bold text-green-700">
+    <h2 className="text-2xl font-bold text-green-700 mb-8">
       45 Hari Lagi
-      <section className="max-w-6xl mx-auto px-6 mt-6 mb-2">
-      <div className="grid md:grid-cols-3 gap-6">
-
-    <div className="bg-white rounded-1xl shadow-lg p-6 text-center">
-      <p className="text-gray-500">Target Donasi</p>
-      <h3 className="text-2xl font-bold text-green-600">
-        Rp 50.000.000
-      </h3>
-      </div>
-
-      <div className="bg-white rounded-1xl shadow-lg p-6 text-center">
-      <p className="text-gray-500">Terkumpul</p>
-      <h3 className="text-2xl font-bold text-blue-600">
-        Rp 12.500.000
-      </h3>
-      </div>
-
-      <div className="bg-white rounded-1xl shadow-lg p-6 text-center">
-      <p className="text-gray-500">Jumlah Donatur</p>
-      <h3 className="text-2xl font-bold text-pink-600">
-        125 Orang
-      </h3>
-      </div>
-
-     </div>
-     </section>
-
-     <div className="bg-white rounded-2xl shadow-lg p-3 mt-0">
-
-      <div className="flex justify-between items-center mb-3 px-4">
-      <span className="font-semibold text-2xl text-green-700">
-    Progress Donasi
-  </span>
-
-      <span className="font-bold text-green-1000 text-2xl">
-    25%
-  </span>
-</div>
-   <div className="ml-6 mr-4 bg-gray-200 rounded-full h-4 overflow-hidden">
-  <div
-    className="bg-green-600 h-4 rounded-full transition-all duration-1000"
-    style={{ width: "25%" }}
-  ></div>
-</div>
-
-    <section className="max-w-6xl mx-auto px-6 mb-10">
-
-  <div className="bg-white rounded-2xl shadow-lg p-5">
-
-    <h2 className="text-2xl font-bold text-center mb-8">
-      🏆 Top Donatur
     </h2>
 
-    <div className="space-y-4">
+    {/* Statistik */}
+    <div className="grid md:grid-cols-3 gap-6 mb-8">
 
-      {topDonatur.map((item, index) => (
+      <div className="bg-gray-50 rounded-xl shadow p-6 text-center">
+        <p className="text-gray-500">Target Donasi</p>
+        <h3 className="text-2xl font-bold text-green-600">
+          Rp 50.000.000
+        </h3>
+      </div>
+
+      <div className="bg-gray-50 rounded-xl shadow p-6 text-center">
+        <p className="text-gray-500">Terkumpul</p>
+        <h3 className="text-2xl font-bold text-blue-600">
+          Rp 12.500.000
+        </h3>
+      </div>
+
+      <div className="bg-gray-50 rounded-xl shadow p-6 text-center">
+        <p className="text-gray-500">Jumlah Donatur</p>
+        <h3 className="text-2xl font-bold text-pink-600">
+          125 Orang
+        </h3>
+      </div>
+
+    </div>
+
+    {/* Progress Donasi */}
+    <div className="bg-gray-50 rounded-xl shadow p-6 mb-8">
+
+      <div className="flex justify-between items-center mb-3">
+        <span className="font-semibold text-green-700">
+          Progress Donasi
+        </span>
+
+        <span className="font-bold text-green-700">
+          25%
+        </span>
+      </div>
+
+      <div className="bg-gray-200 rounded-full h-4 overflow-hidden">
         <div
-          key={index}
-          className="flex justify-between items-center bg-gray-50 rounded-xl px-4 py-3 border"
-        >
-          <div className="flex items-center gap-3">
+          className="bg-green-600 h-4 rounded-full"
+          style={{ width: "25%" }}
+        />
+      </div>
 
-            <div className="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center font-bold">
-              {index + 1}
+    </div>
+
+    {/* Top Donatur */}
+    <div className="bg-white rounded-2xl shadow-lg p-5">
+
+      <h2 className="text-2xl font-bold text-center mb-8">
+        🏆 Top Donatur
+      </h2>
+
+      <div className="space-y-4">
+
+        {topDonatur.map((item, index) => (
+          <div
+            key={index}
+            className="flex justify-between items-center bg-gray-50 rounded-xl px-4 py-3 border"
+          >
+            <div className="flex items-center gap-3">
+
+              <div className="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center font-bold">
+                {index + 1}
+              </div>
+
+              <div>
+                <p className="font-semibold">
+                  {item.nama}
+                </p>
+
+                <p className="text-sm text-gray-500">
+                  Donatur
+                </p>
+              </div>
+
             </div>
 
-            <div>
-              <p className="font-semibold text-base">
-                {item.nama}
-              </p>
-
-              <p className="text-sm text-gray-500">
-                Donatur
-              </p>
+            <div className="font-bold text-green-600">
+              {item.nominal}
             </div>
 
           </div>
+        ))}
 
-          <div className="font-bold text-base text-green-600">
-            {item.nominal}
-          </div>
-
-        </div>
-      ))}
+      </div>
 
     </div>
 
@@ -243,241 +250,231 @@ export default function DonationPage() {
 
 </section>
 
-  <div className="w-full bg-gray-200 rounded-full h-5">
-    <div
-      className="bg-green-600 h-5 rounded-full"
-      style={{ width: "25%" }}
-    ></div>
-  </div>
+   {/* Rekening Donasi */}
+<section className="max-w-6xl mx-auto px-6 py-10">
 
-</div>
-      </h2>
+  <div className="bg-white rounded-2xl shadow-xl p-8">
 
-      <p className="text-gray-500 mt-2">
-      Sabtu, 16 Rabiul Awal 1448 H
-      </p>
-
-      </div>
-
-      </section>
-      {/* Rekening Donasi */}
-      <section className="max-w-6xl mx-auto px-6 py-10">
-
-      <div className="bg-white rounded-2xl shadow-xl p-8">
-
-      <h2 className="text-3xl font-bold mb-6 text-center">
+    <h2 className="text-3xl font-bold mb-6 text-center">
       Rekening Donasi
-      </h2>
+    </h2>
 
-      <div className="grid md:grid-cols-2 gap-6">
+    <div className="grid md:grid-cols-2 gap-6">
 
-      <div className="bg-green-50 border border-green-200 rounded-xl p-6 flex flex-col items-center text-center pt-25">
+      {/* Rekening Bank */}
+      <div className="bg-green-50 border border-green-200 rounded-xl p-6 flex flex-col items-center text-center">
+
         <img
-        src="/payment/mandiri.png"
-        alt="Bank Mandiri"
-        className="h-25 object-contain"
+          src="/payment/mandiri.png"
+          alt="Bank Mandiri"
+          className="h-24 object-contain mb-4"
         />
 
         <h3 className="font-bold text-green-700 mb-2">
-          Bank Mandiri 
+          Bank Mandiri
         </h3>
 
         <p className="text-2xl font-bold">
           1770025733152
-         </p>
-         <button
-         onClick={() => {
-          navigator.clipboard.writeText("1770025733152");
-          alert("Nomor rekening berhasil disalin");
-         }}
-         className="mt-4 bg-green-600 text-white px-4 py-2 rounded-lg"
-         >
-        📋 Salin Rekening
+        </p>
+
+        <button
+          onClick={() => {
+            navigator.clipboard.writeText("1770025733152");
+            alert("Nomor rekening berhasil disalin");
+          }}
+          className="mt-4 bg-green-600 text-white px-4 py-2 rounded-lg"
+        >
+          📋 Salin Rekening
         </button>
 
-        <p className="text-gray-600 mt-2">
+        <p className="text-gray-600 mt-3">
           a.n Yayasan Cahaya Intan Sagara
         </p>
-      </div>
-
-      <div className="bg-white rounded-2xl shadow-xl p-6 relative flex flex-col items-center">
-
-      <div className="absolute top-3 left-3 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold">
-       QRIS Resmi
-      </div>
-      <h3 className="text-lg font-bold text-center mt-6">
-       Scan QRIS
-       </h3>
-
-       <p className="text-sm text-gray-500 mb-4 text-center">
-       Donasi Instan melalui semua E-Wallet & Mobile Banking
-       </p>
-      <img
-        src="/images/qris-donasi.jpg.jpeg"
-       alt="QRIS Donasi"
-       className="w-50 rounded-xl shadow-lg border"
-      />
-
-      <p className="text-center text-sm text-gray-500 mt-3">
-      Scan QRIS untuk berdonasi
-      </p>
-
-      <a
-      href="/images/qris-donasi.jpg"
-      download
-       className="mt-3 block text-center bg-green-600 text-white py-3 rounded-lg font-bold hover:bg-green-700"
-      >
-      📥 Download QRIS
-      </a>
-      
-      </div>
 
       </div>
 
+      {/* QRIS */}
+      <div className="bg-white border rounded-xl p-6 flex flex-col items-center relative">
+
+        <div className="absolute top-3 left-3 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold">
+          QRIS Resmi
+        </div>
+
+        <h3 className="text-lg font-bold text-center mt-6">
+          Scan QRIS
+        </h3>
+
+        <p className="text-sm text-gray-500 mb-4 text-center">
+          Donasi Instan melalui semua E-Wallet & Mobile Banking
+        </p>
+
+        <img
+          src="/images/qris-donasi.jpg.jpeg"
+          alt="QRIS Donasi"
+          className="w-56 rounded-xl shadow-lg border"
+        />
+
+        <p className="text-center text-sm text-gray-500 mt-3">
+          Scan QRIS untuk berdonasi
+        </p>
+
+        <a
+          href="/images/qris-donasi.jpg.jpeg"
+          download
+          className="mt-4 bg-green-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-green-700"
+        >
+          📥 Download QRIS
+        </a>
+
       </div>
-      <section className="max-w-5xl mx-auto px-6 py-12">
 
-      <h2 className="text-3xl font-bold text-center mb-6">
-       Konfirmasi Donasi
-       </h2>
-
-       <div className="bg-white rounded-2xl shadow-xl p-8">
-
-       <form className="space-y-5">
-
-      <input
-       type="text"
-       placeholder="Nama Donatur"
-      className="w-full border rounded-xl p-3"
-      />
-
-      <input
-      type="number"
-       value={nominal}
-        onChange={(e) => setNominal(e.target.value)}
-        className="w-full border rounded-xl p-4"
-      />
-        <div className="grid grid-cols-3 gap-2 mt-3">
-
-  <button
-    type="button"
-    onClick={() => setNominal("25000")}
-    className="bg-green-100 hover:bg-green-200 rounded-lg py-2 font-semibold"
-  >
-    Rp 25rb
-  </button>
-
-  <button
-    type="button"
-    onClick={() => setNominal("50000")}
-    className="bg-green-100 hover:bg-green-200 rounded-lg py-2 font-semibold"
-  >
-    Rp 50rb
-  </button>
-
-  <button
-    type="button"
-    onClick={() => setNominal("100000")}
-    className="bg-green-100 hover:bg-green-200 rounded-lg py-2 font-semibold"
-  >
-    Rp 100rb
-  </button>
-
-  <button
-    type="button"
-    onClick={() => setNominal("250000")}
-    className="bg-green-100 hover:bg-green-200 rounded-lg py-2 font-semibold"
-  >
-    Rp 250rb
-  </button>
-
-  <button
-    type="button"
-    onClick={() => setNominal("500000")}
-    className="bg-green-100 hover:bg-green-200 rounded-lg py-2 font-semibold"
-  >
-    Rp 500rb
-  </button>
-
-  <button
-    type="button"
-    onClick={() => setNominal("1000000")}
-    className="bg-green-600 text-white hover:bg-green-700 rounded-lg py-2 font-bold"
-  >
-    Rp 1 Juta
-  </button>
+    </div>
 
   </div>
 
-       <select
-       className="w-full border rounded-xl p-3"
-       >
+</section>
 
-       <option>Transfer Bank</option>
+{/* Konfirmasi Donasi */}
+<section className="max-w-5xl mx-auto px-6 py-12">
 
-       <option>QRIS</option>
+  <h2 className="text-3xl font-bold text-center mb-6">
+    Konfirmasi Donasi
+  </h2>
 
-      <option>DANA</option>
+  <div className="bg-white rounded-2xl shadow-xl p-8">
 
-       <option>GoPay</option>
+    <form className="space-y-5">
 
-       <option>OVO</option>
-
-       <option>ShopeePay</option>
-
-       </select>
-
-       <input
-       type="date"
-       className="w-full border rounded-xl p-3"
+      <input
+        type="text"
+        placeholder="Nama Donatur"
+        className="w-full border rounded-xl p-3"
       />
 
-      <textarea
-      rows={4}
-       placeholder="Doa atau Pesan"
-       className="w-full border rounded-xl p-3"
-       />
+      <input
+        type="number"
+        value={nominal}
+        onChange={(e) => setNominal(e.target.value)}
+        placeholder="Nominal Donasi"
+        className="w-full border rounded-xl p-4"
+      />
 
-       <input
-       type="file"
-       accept="image/*"
-       className="w-full border rounded-xl p-4"
-        onChange={(e) => {
-        const file = e.target.files?.[0];
+      <div className="grid grid-cols-3 gap-2">
 
-        if (file) {
+        <button
+          type="button"
+          onClick={() => setNominal("25000")}
+          className="bg-green-100 hover:bg-green-200 rounded-lg py-2 font-semibold"
+        >
+          Rp 25rb
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setNominal("50000")}
+          className="bg-green-100 hover:bg-green-200 rounded-lg py-2 font-semibold"
+        >
+          Rp 50rb
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setNominal("100000")}
+          className="bg-green-100 hover:bg-green-200 rounded-lg py-2 font-semibold"
+        >
+          Rp 100rb
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setNominal("250000")}
+          className="bg-green-100 hover:bg-green-200 rounded-lg py-2 font-semibold"
+        >
+          Rp 250rb
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setNominal("500000")}
+          className="bg-green-100 hover:bg-green-200 rounded-lg py-2 font-semibold"
+        >
+          Rp 500rb
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setNominal("1000000")}
+          className="bg-green-600 text-white hover:bg-green-700 rounded-lg py-2 font-bold"
+        >
+          Rp 1 Juta
+        </button>
+
+      </div>
+
+ <select
+  className="w-full border rounded-xl p-3"
+>
+  <option>Transfer Bank</option>
+  <option>QRIS</option>
+  <option>DANA</option>
+  <option>GoPay</option>
+  <option>OVO</option>
+  <option>ShopeePay</option>
+</select>
+
+<input
+  type="date"
+  className="w-full border rounded-xl p-3"
+/>
+
+<textarea
+  rows={4}
+  placeholder="Doa atau Pesan untuk Anak Yatim dan Dhuafa"
+  className="w-full border rounded-xl p-3"
+/>
+
+<input
+  type="file"
+  accept="image/*"
+  className="w-full border rounded-xl p-4"
+  onChange={(e) => {
+    const file = e.target.files?.[0];
+
+    if (file) {
       setPreview(URL.createObjectURL(file));
-       }
-      }}
-      />
+    }
+  }}
+/>
 
-      {preview && (
-       <div className="bg-gray-50 p-4 rounded-xl border mt-4">
-      <p className="font-semibold mb-2 text-center">
+{preview && (
+  <div className="bg-gray-50 p-4 rounded-xl border mt-4">
+
+    <p className="font-semibold mb-3 text-center">
       Preview Bukti Transfer
-      </p>
+    </p>
 
-      <img
+    <img
       src={preview}
       alt="Bukti Transfer"
-      className="w-35 h-72 object-cover mx-auto rounded-xl shadow-lg border"
-       />
-       </div>
-       )}
+      className="w-48 h-auto mx-auto rounded-xl shadow-lg border"
+    />
 
-       <button
-       className="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-xl font-bold"
-       >
+  </div>
+)}
 
-       Kirim Konfirmasi Donasi
+<button
+  type="submit"
+  className="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-xl font-bold transition-all duration-300"
+>
+  💝 Kirim Konfirmasi Donasi
+</button>
 
-      </button>
+</form>
 
-      </form>
+</div>
 
-       </div>
-
-       </section>
+</section>
 
       <section className="max-w-6xl mx-auto px-6 py-10">
 
@@ -515,70 +512,29 @@ export default function DonationPage() {
 
     </section>
     {/* Galeri Kegiatan */}
-<section className="max-w-6xl mx-auto px-6 py-16">
+
+  <section className="max-w-6xl mx-auto px-6 py-16">
 
   <h2 className="text-3xl font-bold text-center mb-10">
-    Dokumentasi Kegiatan
+    Galeri Kegiatan
   </h2>
 
   <div className="grid md:grid-cols-3 gap-6">
-
-    <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
-      <img
-        src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846"
-        alt="Santunan Yatim"
-        className="w-full h-56 object-cover hover:scale-110 transition-all duration-500"
-      />
-      <div className="p-4">
-        <h3 className="font-bold text-lg">
-          Santunan Anak Yatim
-        </h3>
-        <p className="text-sm text-gray-600">
-          Kegiatan santunan dan berbagi kebahagiaan.
-        </p>
+    {galeriKegiatan.map((foto, index) => (
+      <div
+        key={index}
+        className="overflow-hidden rounded-2xl shadow-lg"
+      >
+        <img
+          src={foto}
+          alt={`Kegiatan ${index + 1}`}
+          className="w-full h-64 object-cover hover:scale-110 transition-all duration-500"
+        />
       </div>
-    </div>
-
-    <div className="bg-white rounded-2xl shadow-lg overflow-hidden relative hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
-      <img
-        src="https://images.unsplash.com/photo-1507692049790-de58290a4334"
-        alt="Pengajian"
-        className="w-full h-56 object-cover"
-      />
-      <div className="p-4">
-        <h3 className="font-bold text-lg">
-          Pengajian Umum
-        </h3>
-        <p className="text-sm text-gray-600">
-          Kajian dan tausiyah untuk masyarakat.
-        </p>
-      </div>
-    </div>
-
-    <div className="bg-white rounded-2xl shadow-lg overflow-hidden relative hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
-         <div className="absolute top-3 left-3 bg-green-600 text-white text-xs px-3 py-1 rounded-full z-10">
-         Maulid 1448 H
-        </div>
-      <img
-        src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
-        alt="Maulid"
-        className="w-full h-56 object-cover"
-      />
-      <div className="p-4">
-        <h3 className="font-bold text-lg">
-          Maulid Nabi
-        </h3>
-        <p className="text-sm text-gray-600">
-          Memperingati kelahiran Nabi Muhammad ﷺ.
-        </p>
-      </div>
-    </div>
-
+    ))}
   </div>
 
 </section>
-
-       </section>
 
        {/* Statistik */}
        <section className="max-w-6xl mx-auto px-6 -mt-10 relative z-10">
@@ -695,31 +651,6 @@ export default function DonationPage() {
   </div>
 
 </section>
-
-    <section className="max-w-6xl mx-auto px-10 pt-0 pb-8">
-
-   <h2 className="text-3xl font-bold text-center mb-4">
-    📸 Galeri Kegiatan
-  </h2>
-
-  <div className="grid md:grid-cols-3 gap-4">
-    
-    {galeriKegiatan.map((foto, index) => (
-      <div
-        key={index}
-        className="overflow-hidden rounded-2xl shadow-lg bg-white"
-      >
-        <img
-          src={foto}
-          alt={`Galeri ${index + 1}`}
-          className="w-full h-64 object-cover hover:scale-110 transition-all duration-700"
-        />
-      </div>
-    ))}
-
-  </div>
-
-</section>
       <section className="bg-white py-16">
         <div className="max-w-6xl mx-auto px-6">
 
@@ -789,7 +720,6 @@ export default function DonationPage() {
     <img
       src="/logo/wa.png"
       alt="WhatsApp"
-      className="w-12 h-12 hover:scale-110 transition-all duration-300"
       className="w-12 h-12 hover:scale-110 animate-pulse transition-all duration-300"
     />
   </a>
@@ -800,43 +730,22 @@ export default function DonationPage() {
     <img
       src="/logo/email.png"
       alt="Email"
-      className="w-12 h-12 hover:scale-110 transition-all duration-300"
-      className="w-12 h-12 hover:scale-110 animate-pulse transition-all duration-300"
+       className="w-12 h-12 hover:scale-110 animate-pulse transition-all duration-300"
     />
   </a>
 
 </div>
+    
       </section>
-        <a
-       href="https://wa.me/6285318169106"
-       target="_blank"
-       rel="noreferrer"
-       className="
-       fixed
-       bottom-6
-       right-6
-       bg-green-500
-       text-white
-       w-16
-       h-16
-       rounded-full
-       shadow-2xl
-       flex
-       items-center
-       justify-center
-       text-3xl
-       hover:scale-110
-       transition-all
-       duration-300
-      "
-    >
-    💬
-    </a>
-    <footer className="bg-slate-300 text-white py-12 mt-10">
-  <div className="max-w-6xl mx-auto px-6 text-center">
 
-    <p className="mt-3 text-slate-200 text-sm">
-    </p>
+      <a
+  href="https://wa.me/6285318169106"
+  target="_blank"
+  rel="noreferrer"
+  className="fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full shadow-2xl flex items-center justify-center text-3xl hover:scale-110 transition-all duration-300"
+>
+  WA
+</a>
    <footer className="bg-green-900 text-white mt-5">
 
   <div className="max-w-6xl mx-auto px-6 py-12">
@@ -884,9 +793,7 @@ export default function DonationPage() {
   </div>
 
 </footer>
-
-  </div>
-</footer>
+    
     </div>
     
    );
