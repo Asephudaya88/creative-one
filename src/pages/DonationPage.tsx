@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { MessageCircle } from "lucide-react";
 const galeriKegiatan = [
   "/galeri/kegiatan/1.jpeg",
   "/galeri/kegiatan/2.jpeg",
@@ -74,36 +75,44 @@ const dokumentasiKegiatan = [
      </div>
      </section>
 
-      <section className="bg-gradient-to-r from-green-800 via-green-700 to-emerald-600 text-white py-24">
+      <section className="bg-gradient-to-r from-green-800 via-green-700 to-emerald-600 text-white pt-6 pb-24">
         <div className="max-w-6xl mx-auto px-6 text-center">
 
-          <div className="mb-4">
-         <div className="uppercase tracking-widest text-yellow-300 font-semibold">
-          <div className="flex justify-center items-center gap-8 mb-6">
+ <div className="mb-8">
 
-          <img
-          src="/logo/yayasan.png"
-          alt="Yayasan Cahaya Intan Sagara"
-          className="h-28 w-28 object-contain bg-white rounded-full p-2 shadow-lg"
-          />
+  <div className="flex justify-center items-center gap-8 mb-6">
 
-          <div className="text-6xl">
-          🤝
-          </div>
+    <img
+      src="/logo/yayasan.png"
+      alt="Yayasan Cahaya Intan Sagara"
+      className="h-28 w-28 object-contain bg-white rounded-full p-2 shadow-lg"
+    />
 
-          <img
-          src="/logo/alhilal.png"
-          alt="Komunitas Sahabat Al-Hilal Garut 2.0"
-          className="h-28 w-28 object-contain bg-white rounded-full p-2 shadow-lg"
-          />
-          <div className="font-bold text-xl">
-          YAYASAN CAHAYA INTAN SAGARA
-          </div>
+    <div className="text-6xl">
+      🤝
+    </div>
 
-         <p className="text-white/90 text-sm md:text-base mt-1">
-          BERSAMA KOMUNITAS SAHABAT AL-HILAL GARUT 2.0
-          </p>
-         </div>
+    <img
+      src="/logo/alhilal.png"
+      alt="Komunitas Sahabat Al-Hilal Garut 2.0"
+      className="h-28 w-28 object-contain bg-white rounded-full p-2 shadow-lg"
+    />
+
+  </div>
+
+  <div className="text-center">
+
+    <h3 className="font-bold text-2xl text-yellow-300">
+      YAYASAN CAHAYA INTAN SAGARA
+    </h3>
+
+    <p className="text-white text-lg mt-2">
+      BERSAMA KOMUNITAS SAHABAT AL-HILAL GARUT 2.0
+    </p>
+
+  </div>
+
+</div>
     
           <h1 className="text-5xl font-bold mb-6">
             Open Donasi Maulid Nabi Muhammad ﷺ
@@ -114,7 +123,35 @@ const dokumentasiKegiatan = [
             Dhuafa dan Lansia dalam rangka memperingati
             Maulid Nabi Muhammad ﷺ.
           </p>
+            <div className="max-w-4xl mx-auto bg-white/10 backdrop-blur-md rounded-2xl p-6 mb-8 border border-white/20">
 
+  <h3 className="text-2xl font-bold text-yellow-300 mb-4">
+    Allah SWT Berfirman : 
+  </h3>
+
+  <blockquote className="border-l-4 border-yellow-300 pl-4 italic text-white text-left">
+    Perumpamaan orang yang menginfakkan hartanya di jalan Allah
+    seperti sebutir benih yang menumbuhkan tujuh bulir...
+    (QS. Al-Baqarah: 261)
+  </blockquote>
+
+  <div className="mt-5 bg-white/10 p-4 rounded-xl text-left">
+
+    <h4 className="font-bold text-yellow-300 mb-2">
+      Sabda Nabi Muhammad SAW :
+    </h4>
+
+    <p className="italic">
+      "Aku dan orang yang menanggung anak yatim akan berada di surga seperti ini."
+    </p>
+
+    <p className="mt-2 text-yellow-300 font-semibold">
+      (HR. Bukhari)
+    </p>
+
+  </div>
+
+</div>
           <a
             href="https://wa.me/6285318169106"
             target="_blank"
@@ -145,9 +182,6 @@ const dokumentasiKegiatan = [
             <span className="bg-white/20 text-white px-4 py-2 rounded-full text-sm">
            🤝 Amanah & Transparan
             </span>
-
-            </div>
-            </div>
             </div>
            </section>
         
@@ -750,63 +784,97 @@ const dokumentasiKegiatan = [
     
       </section>
 
-      <a
+ <a
   href="https://wa.me/6285318169106"
   target="_blank"
   rel="noreferrer"
-  className="fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full shadow-2xl flex items-center justify-center text-3xl hover:scale-110 transition-all duration-300"
+  className="fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl z-50 hover:scale-110 transition-all duration-300"
 >
-  WA
+  <MessageCircle size={32} />
 </a>
-   <footer className="bg-green-900 text-white mt-5">
+
+ <footer className="bg-green-900 text-white mt-10">
 
   <div className="max-w-6xl mx-auto px-6 py-12">
 
-    <div className="grid md:grid-cols-3 gap-8">
+    <div className="grid md:grid-cols-3 gap-12 items-start">
 
+      {/* Yayasan */}
       <div>
-        <h3 className="font-bold text-xl mb-4">
+        <h3 className="font-bold text-2xl mb-4 text-yellow-300">
           Yayasan Cahaya Intan Sagara
         </h3>
 
-        <p className="text-green-100">
+        <p className="text-green-100 leading-relaxed">
           Bersama Komunitas Sahabat Al-Hilal Garut 2.0
+        </p>
+
+        <p className="text-green-200 mt-3 text-sm">
+          Open Donasi Maulid Nabi Muhammad ﷺ
         </p>
       </div>
 
+      {/* Kontak */}
       <div>
-        <h3 className="font-bold text-xl mb-4">
+        <h3 className="font-bold text-2xl mb-4 text-yellow-300">
           Kontak
         </h3>
 
-        <p>📞 0853-1816-9106</p>
-        <p>📍 Garut, Jawa Barat</p>
+        <div className="space-y-3 text-green-100">
+
+          <p>
+            📞 0853-1816-9106
+          </p>
+
+          <p>
+            📍 Garut, Jawa Barat
+          </p>
+
+          <p>
+            ✉️ yayasancahayaintansagara26@gmail.com
+          </p>
+
+        </div>
       </div>
 
+      {/* Creative One */}
       <div>
-        <h3 className="font-bold text-xl mb-4">
+        <h3 className="font-bold text-2xl mb-4 text-yellow-300">
           Creative One
         </h3>
 
-        <p>Satu Platform • Ribuan Manfaat</p>
-        <p>Powered by PT Karangsari Creative Solution</p>
+        <p className="text-green-100">
+          Satu Platform • Ribuan Manfaat
+        </p>
+
+        <p className="text-green-100 mt-2">
+          Powered by PT Karangsari Creative Solution
+        </p>
+
+        <div className="mt-4 inline-block bg-green-800 px-4 py-2 rounded-full text-sm">
+          V11 Donation Landing Page
+        </div>
+
       </div>
 
     </div>
 
-    <div className="border-t border-green-300 mt-8 pt-6 text-center text-green-500">
+    <div className="border-t border-green-700 mt-10 pt-6 text-center">
 
-      © 2026 Yayasan Cahaya Intan Sagara
-      <br />
-      Open Donasi Maulid Nabi Muhammad ﷺ
+      <p className="text-green-300">
+        © 2026 Yayasan Cahaya Intan Sagara
+      </p>
+
+      <p className="text-green-400 text-sm mt-2">
+        Open Donasi Maulid Nabi Muhammad ﷺ
+      </p>
 
     </div>
 
   </div>
 
 </footer>
-    
-    </div>
+</div>
 
-   );
+);
 }
