@@ -57,6 +57,15 @@ export default function DonationPage() {
   "❤️ Hamba Allah berdonasi Rp 50.000",
 ];
 
+const dokumentasiKegiatan = [
+  "/galeri/dokumentasi/1.jpeg",
+  "/galeri/dokumentasi/2.jpeg",
+  "/galeri/dokumentasi/3.jpeg",
+  "/galeri/dokumentasi/4.jpeg",
+  "/galeri/dokumentasi/5.jpeg",
+  "/galeri/dokumentasi/6.jpeg",
+];
+
   return (
     <div className="min-h-screen bg-gray-50">
         <section className="bg-green-600 text-white py-3 overflow-hidden">
@@ -511,30 +520,33 @@ export default function DonationPage() {
       </div>
 
     </section>
-    {/* Galeri Kegiatan */}
 
-  <section className="max-w-6xl mx-auto px-6 py-16">
+{/* Dokumentasi Kegiatan */}
+<section className="max-w-7xl mx-auto px-6 py-16">
 
   <h2 className="text-3xl font-bold text-center mb-10">
-    Galeri Kegiatan
+    📸 Dokumentasi Kegiatan
   </h2>
 
   <div className="grid md:grid-cols-3 gap-6">
-    {galeriKegiatan.map((foto, index) => (
+
+    {dokumentasiKegiatan.map((foto, index) => (
       <div
         key={index}
         className="overflow-hidden rounded-2xl shadow-lg"
       >
         <img
           src={foto}
-          alt={`Kegiatan ${index + 1}`}
-          className="w-full h-64 object-cover hover:scale-110 transition-all duration-500"
+          alt={`Dokumentasi ${index + 1}`}
+          className="w-full h-72 object-cover hover:scale-105 transition-all duration-500"
         />
       </div>
     ))}
+
   </div>
 
 </section>
+
 
        {/* Statistik */}
        <section className="max-w-6xl mx-auto px-6 -mt-10 relative z-10">
@@ -795,6 +807,6 @@ export default function DonationPage() {
 </footer>
     
     </div>
-    
+
    );
 }
