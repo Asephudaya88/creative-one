@@ -5,6 +5,7 @@ import WalletPage from "./features/wallet/WalletPage";
 import LoginPage from "./features/auth/LoginPage";
 import ProfilePage from "./features/settings/ProfilePage";
 import StudioPage from "./features/studio/StudioPage";
+import LandingPageBuilder from "./features/landingpage/LandingPageBuilder";
 import { useState, useEffect, useRef, FormEvent } from "react";
 import {
   Droplet,
@@ -2563,6 +2564,15 @@ export default function App() {
                 {/* Creative Studio */}
                 {activeModule.id === "studio" && (
                    <StudioPage />
+                   )}
+                   {activeModule.id === "studio" && (
+                    <>
+                    <StudioPage />
+
+                    <div className="mt-8">
+                   <LandingPageBuilder />
+                   </div>
+                   </>
                    )}
                    
                 {/* 16. Creative AI */}
