@@ -2,14 +2,29 @@ import { useState } from "react";
 import LandingPagePreview from "./LandingPagePreview";
 
 export default function LandingPageBuilder() {
+
     const [data, setData] = useState({
   title: "Open Donasi Maulid Nabi",
   subtitle: "Yayasan Cahaya Intan Sagara",
-  description:
-    "Mari bersama-sama membantu kegiatan sosial dan dakwah.",
+  description: "Mari bersama-sama membantu kegiatan sosial dan dakwah.",
   whatsapp: "6285318169106",
+
   logo: "",
   cover: "",
+
+  targetDonasi: "10000000",
+  terkumpul: "2500000",
+
+  bank: "Bank Mandiri",
+  rekening: "1770025733152",
+  atasNama: "Yayasan Cahaya Intan Sagara",
+
+  qris: "",
+
+  galeri1: "",
+  galeri2: "",
+  galeri3: "",
+
   theme: "green",
 });
 
@@ -134,6 +149,107 @@ export default function LandingPageBuilder() {
              reader.readAsDataURL(file);
            }}
             />
+
+            <label className="block text-sm mb-2 mt-4">
+  Upload QRIS
+</label>
+
+<input
+  type="file"
+  accept="image/*"
+  className="w-full p-2 rounded-xl bg-white text-black border"
+  onChange={(e) => {
+    const file = e.target.files?.[0];
+
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      setData({
+        ...data,
+        qris: reader.result as string,
+      });
+    };
+    reader.readAsDataURL(file);
+  }}
+/>
+<label className="block text-sm mb-2 mt-4">
+  Galeri Kegiatan 1
+</label>
+
+<input
+  type="file"
+  accept="image/*"
+  className="w-full p-2 rounded-xl bg-white text-black border"
+  onChange={(e) => {
+    const file = e.target.files?.[0];
+
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      setData({
+        ...data,
+        galeri1: reader.result as string,
+      });
+    };
+
+    reader.readAsDataURL(file);
+  }}
+/>
+<label className="block text-sm mb-2 mt-4">
+  Galeri Kegiatan 2
+</label>
+
+<input
+  type="file"
+  accept="image/*"
+  className="w-full p-2 rounded-xl bg-white text-black border"
+  onChange={(e) => {
+    const file = e.target.files?.[0];
+
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      setData({
+        ...data,
+        galeri2: reader.result as string,
+      });
+    };
+
+    reader.readAsDataURL(file);
+  }}
+/>
+
+<label className="block text-sm mb-2 mt-4">
+  Galeri Kegiatan 3
+</label>
+
+<input
+  type="file"
+  accept="image/*"
+  className="w-full p-2 rounded-xl bg-white text-black border"
+  onChange={(e) => {
+    const file = e.target.files?.[0];
+
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      setData({
+        ...data,
+        galeri3: reader.result as string,
+      });
+    };
+
+    reader.readAsDataURL(file);
+  }}
+/>
            <div className="grid grid-cols-2 gap-2 mt-4">
 
            <button
@@ -259,7 +375,8 @@ export default function LandingPageBuilder() {
           className="w-full mt-3 p-3 rounded-lg bg-cyan-500 text-white font-bold"
           onClick={() => {
             console.log(data);
-            const htmlContent = `
+            const htmlContent = 
+            `
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -308,6 +425,38 @@ padding:12px 24px;
 border-radius:8px;
 text-decoration:none;
 }
+.progress{
+background:#e5e7eb;
+height:20px;
+border-radius:999px;
+overflow:hidden;
+margin-bottom:20px;
+}
+
+.progress-bar{
+background:#16a34a;
+height:100%;
+width:25%;
+}
+
+.card{
+background:#f3f4f6;
+padding:20px;
+border-radius:12px;
+margin-bottom:20px;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+margin-top:20px;
+}
+
+.gallery img{
+width:100%;
+border-radius:12px;
+}
 </style>
 </head>
 
@@ -328,6 +477,47 @@ ${data.logo ? `<img src="${data.logo}" />` : ""}
 
 <p>${data.description}</p>
 
+<h2>Progress Donasi</h2>
+
+<div class="progress">
+<div class="progress-bar"></div>
+</div>
+
+<p>
+Rp ${data.terkumpul}
+dari
+Rp ${data.targetDonasi}
+</p>
+
+<div class="card">
+<h3>Rekening Donasi</h3>
+
+<p>${data.bank}</p>
+
+<b>${data.rekening}</b>
+</div>
+
+${data.qris ? `
+<div class="card">
+<h3>Scan QRIS</h3>
+
+<img
+src="${data.qris}"
+style="width:250px"
+>
+</div>
+` : ""}
+
+<div class="gallery">
+
+${data.galeri1 ? `<img src="${data.galeri1}" />` : ""}
+${data.galeri2 ? `<img src="${data.galeri2}" />` : ""}
+${data.galeri3 ? `<img src="${data.galeri3}" />` : ""}
+
+</div>
+
+<br><br>
+
 <a
 class="btn"
 href="https://wa.me/${data.whatsapp}"
@@ -338,6 +528,25 @@ Hubungi Kami
 
 </div>
 
+</div>
+<footer
+style="
+background:#0f172a;
+color:white;
+padding:30px;
+text-align:center;
+margin-top:40px;
+"
+>
+
+<h3>Yayasan Cahaya Intan Sagara</h3>
+
+<p>
+WhatsApp:
+${data.whatsapp}
+</p>
+
+</footer>
 </body>
 </html>
 `;

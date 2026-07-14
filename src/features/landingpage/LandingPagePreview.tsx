@@ -39,21 +39,118 @@ export default function LandingPagePreview({ data }: Props) {
       </div>
 
       {/* CONTENT */}
-      <div className="p-8 pt-16">
+<div className="p-8 pt-10">
 
-        <p className="mb-6">
-          {data.description}
-        </p>
+  <p className="mb-6 text-gray-700">
+    {data.description}
+  </p>
 
-        <a
-          className="inline-block mt-6 px-6 py-3 bg-green-600 text-white rounded-xl"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Hubungi Kami
-        </a>
+  {/* PROGRESS DONASI */}
+  <div className="mb-8">
 
-      </div>
+    <h3 className="font-bold mb-2">
+      Progress Donasi
+    </h3>
+
+    <div className="w-full bg-gray-200 h-4 rounded-full">
+      <div
+        className="bg-green-600 h-4 rounded-full"
+        style={{ width: "25%" }}
+      />
+    </div>
+
+    <p className="mt-2 text-sm">
+      Rp {data.terkumpul} / Rp {data.targetDonasi}
+    </p>
+
+  </div>
+
+  {/* REKENING */}
+  <div className="mb-8 p-4 bg-gray-100 rounded-xl text-black">
+
+   <h3 className="font-bold mb-2">
+  Rekening Donasi
+</h3>
+
+<p className="text-gray-700">
+  {data.bank}
+</p>
+
+<p className="text-gray-700">
+  A/N {data.atasNama}
+</p>
+
+<p className="font-bold text-xl">
+  {data.rekening}
+</p>
+
+  </div>
+
+  {/* QRIS */}
+{data.qris && (
+  <div className="mb-8 text-center">
+
+    <h3 className="font-bold mb-3">
+      Scan QRIS
+    </h3>
+
+    <img
+      src={data.qris}
+      alt="QRIS"
+      className="w-64 mx-auto rounded-xl shadow-lg"
+    />
+
+  </div>
+)}
+
+{/* GALERI KEGIATAN */}
+<div className="mb-8">
+
+  <h3 className="font-bold mb-4">
+    Galeri Kegiatan
+  </h3>
+
+  <div className="grid grid-cols-3 gap-3">
+
+    {data.galeri1 && (
+      <img
+        src={data.galeri1}
+        alt="Galeri 1"
+        className="rounded-xl h-32 w-full object-cover"
+      />
+    )}
+
+    {data.galeri2 && (
+      <img
+        src={data.galeri2}
+        alt="Galeri 2"
+        className="rounded-xl h-32 w-full object-cover"
+      />
+    )}
+
+    {data.galeri3 && (
+      <img
+        src={data.galeri3}
+        alt="Galeri 3"
+        className="rounded-xl h-32 w-full object-cover"
+      />
+    )}
+
+  </div>
+
+</div>
+
+{/* WA */}
+<a
+  href={`https://wa.me/${data.whatsapp}`}
+  className="inline-block px-6 py-3 bg-green-600 text-white rounded-xl"
+  target="_blank"
+  rel="noreferrer"
+>
+  Hubungi Kami
+</a>
+
+</div>
 
     </div>
   );
