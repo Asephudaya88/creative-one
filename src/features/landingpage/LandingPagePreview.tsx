@@ -7,6 +7,12 @@ interface Props {
 export default function LandingPagePreview({ data }: Props) {
 const isAIMode = data.aiMode;
 
+const progress = Math.round(
+  (Number(data.terkumpul || 0) /
+    Number(data.targetDonasi || 1)) *
+    100
+);
+
 return (
   <div className="bg-white rounded-2xl overflow-hidden shadow-xl">
 
@@ -112,37 +118,31 @@ return (
 
       </div>
 
-      {/* TARGET DONASI */}
+      {/* Progress Donasi */}
+<div className="mt-6 mb-8">
 
-      <div className="grid md:grid-cols-2 gap-4 mb-8 items-stretch" >
+  <div className="flex justify-between text-sm mb-2 text-green-800 font-semibold">
+    <span>📈 Progress Donasi</span>
+     
+  <span className="font-bold text-green-700">
+    {progress}%
+  </span>
+</div>
 
-        <div className="bg-white rounded-2xl p-5 shadow-lg">
+  <div className="w-full h-6 bg-gray-200 rounded-full overflow-hidden shadow-inner">
+    <div
+      className="h-full bg-gradient-to-r from-green-500 to-emerald-600"
+      style={{ width: `${progress}%` }}
+    />
+  </div>
+<div className="text-center text-sm text-gray-600 mt-2">
+  Rp {Number(data.terkumpul || 0).toLocaleString("id-ID")}
+  {" "}dari{" "}
+  Rp {Number(data.targetDonasi || 0).toLocaleString("id-ID")}
+</div>
+</div>
 
-          <p className="text-gray-500 text-sm">
-            Target Donasi
-          </p>
-
-          <p className="text-2xl font-bold text-green-700">
-            Rp {data.targetDonasi}
-          </p>
-
-        </div>
-
-        <div className="bg-white rounded-2xl p-5 shadow-lg">
-
-          <p className="text-gray-500 text-sm">
-            Terkumpul
-          </p>
-
-          <p className="text-2xl font-bold text-blue-700">
-            Rp {data.terkumpul}
-          </p>
-
-        </div>
-
-      </div>
-
-      {/* REKENING + QRIS */}
+       {/* REKENING + QRIS */}
 
       <div className="
   p-6
@@ -160,7 +160,7 @@ return (
   <img
     src="/payment/mandiri.png"
     alt="Bank Mandiri"
-    className="h-12 w-auto mx-auto mb-4 bg-white p-2 rounded-xl"
+    className="h-30 w-auto mx-auto mb-4 bg-white p-2 rounded-xl"
   />
 
   <h3 className="font-bold mb-3 text-center">

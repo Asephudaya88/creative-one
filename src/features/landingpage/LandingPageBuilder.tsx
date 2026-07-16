@@ -2,36 +2,6 @@ import { detectTemplate } from "./aiGenerator";
 import { useState } from "react";
 import { LandingPageData } from "./types";
 import LandingPagePreview from "./LandingPagePreview";
-const aiTemplates = {
-  maulid: {
-    quote:
-      "Menebar Cinta Rasulullah SAW, Menguatkan Ukhuwah Islamiyah",
-    theme: "green",
-    template: "maulid",
-  },
-
-  yatim: {
-    quote:
-      "Kecilnya Donasi Anda, Besarnya Manfaat Bagi Mereka",
-    theme: "blue",
-    template: "yatim",
-  },
-
-  wakaf: {
-    quote:
-      "Wakaf Hari Ini, Pahala Mengalir Selamanya",
-    theme: "purple",
-    template: "wakaf",
-  },
-
-  masjid: {
-    quote:
-      "Mari Menjadi Bagian Dari Pembangunan Rumah Allah",
-    theme: "emerald",
-    template: "masjid",
-  },
-};
-
 
 export default function LandingPageBuilder() {
 
@@ -42,7 +12,7 @@ export default function LandingPageBuilder() {
   whatsapp: "6285318169106",
 
   logo: "",
-  cover: "",
+  cover: "/templates/maulid.jpg",
 
   targetDonasi: "10000000",
   terkumpul: "2500000",
@@ -60,63 +30,57 @@ export default function LandingPageBuilder() {
   buttonText: "Hubungi Kami",
 
   theme: "green",
+aiMode: true,
+template: "maulid",
+quote: "Tes AI Mode",
+
 });
 
 const generateAIPage = () => {
-  const title = data.title.toLowerCase();
+  const ai = detectTemplate(data.title);
 
-  let template = "pengajian";
-  let quote = "Menuntut Ilmu, Menjemput Berkah";
-  let theme = "red";
-
-  if (title.includes("maulid")) {
-    template = "maulid";
-    quote =
-      "Menebar Cinta Rasulullah SAW, Menguatkan Ukhuwah Islamiyah";
-    theme = "green";
-  }
-
-  else if (
-    title.includes("yatim") ||
-    title.includes("dhuafa")
-  ) {
-    template = "yatim";
-    quote =
-      "Senyum Mereka Adalah Kebahagiaan Kita";
-    theme = "blue";
-  }
-
-  else if (
-    title.includes("wakaf")
-  ) {
-    template = "wakaf";
-    quote =
-      "Satu Huruf Dibaca, Pahala Mengalir Selamanya";
-    theme = "purple";
-  }
-
-  else if (
-    title.includes("masjid") ||
-    title.includes("mushola")
-  ) {
-    template = "masjid";
-    quote =
-      "Bangun Rumah Allah, Bangun Peradaban";
-    theme = "gold";
-  }
-
- setData({
+  setData({
   ...data,
 
   aiMode: true,
 
-  template,
-  quote,
-  theme,
+  template: ai.template,
+  quote: ai.quote,
+  theme: ai.theme,
 
-  cover: `/templates/${template}.jpg`,
+  cover: ai.cover,
+
+  targetDonasi: "10000000",
+  terkumpul: "2500000",
 });
 };
+<div className="mt-6">
+  <div className="flex justify-between text-sm mb-2">
+    <span>Progress Donasi</span>
+
+    <span>
+      {Math.round(
+        (Number(data.terkumpul || 0) /
+          Number(data.targetDonasi || 1)) *
+          100
+      )}
+      %
+    </span>
+  </div>
+
+  <div className="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
+    <div
+      className="bg-green-600 h-4"
+      style={{
+        width: `${
+          (Number(data.terkumpul || 0) /
+            Number(data.targetDonasi || 1)) *
+          100
+        }%`,
+      }}
+    />
+  </div>
+</div>
   return (
     <div className="grid lg:grid-cols-2 gap-6">
       {/* FORM EDITOR */}
