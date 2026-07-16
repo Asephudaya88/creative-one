@@ -69,7 +69,7 @@ const dokumentasiKegiatan = [
 
   return (
     <div className="min-h-screen bg-gray-50">
-        <section className="bg-green-600 text-white py-3 overflow-hidden">
+        <section className="bg-gradient-to-r from-green-600 to-emerald-500 text-white py-3 overflow-hidden">
       <div className="whitespace-nowrap animate-marquee">
     {donaturLive.join(" • • • ")}
      </div>

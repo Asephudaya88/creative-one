@@ -28,5 +28,13 @@ export interface LandingPageData {
   buttonText?: string;
   buttonLink?: string;
 
+  aiMode?: boolean;
+
+  quote?: string;
+  template?: string;
+
+  category?: string;
+  heroTitle?: string;
+
   theme: string;
 }

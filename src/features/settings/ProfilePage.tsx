@@ -30,7 +30,7 @@ export default function ProfilePage({ user }: Props) {
 
       <div className="bg-white rounded-2xl shadow p-5">
 
-        <h3 className="font-bold mb-4">
+        <h3 className="text-2xl font-bold text-green-800 mb-4">
           Informasi Akun
         </h3>
 
