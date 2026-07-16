@@ -391,15 +391,299 @@ const generateAIPage = () => {
   ✨ Generate Landing Page AI
 </button>
 
-        <button
+       <button
   className="w-full mt-4 bg-cyan-500 text-white p-3 rounded-xl font-bold"
   onClick={() => {
 
     const htmlContent = `
 <!DOCTYPE html>
-<html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+/>
+
+<title>${data.title}</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+color:#333;
+}
+
+.hero{
+background:#16a34a;
+color:white;
+padding:80px 20px;
+text-align:center;
+}
+
+.logo{
+width:120px;
+height:120px;
+border-radius:50%;
+background:white;
+padding:10px;
+margin-bottom:20px;
+}
+
+.title{
+font-size:52px;
+font-weight:bold;
+}
+
+.subtitle{
+font-size:22px;
+margin-top:10px;
+}
+
+.content{
+max-width:1200px;
+margin:auto;
+padding:40px 20px;
+}
+
+.desc{
+text-align:center;
+margin-bottom:30px;
+font-size:18px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+margin-bottom:30px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.rekening{
+background:linear-gradient(135deg,#15803d,#10b981);
+color:white;
+text-align:center;
+}
+
+.rekening-number{
+font-size:36px;
+font-weight:bold;
+margin-top:10px;
+}
+
+.qris{
+text-align:center;
+}
+
+.qris img{
+width:260px;
+border-radius:15px;
+border:4px solid #dcfce7;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+margin-top:20px;
+}
+
+.gallery img{
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:15px;
+}
+
+.btn{
+display:inline-block;
+background:#16a34a;
+color:white;
+padding:15px 30px;
+border-radius:15px;
+text-decoration:none;
+font-weight:bold;
+margin-top:25px;
+}
+
+.center{
+text-align:center;
+}
+
+.footer{
+background:#14532d;
+color:white;
+text-align:center;
+padding:40px;
+margin-top:50px;
+}
+
+.footer h2{
+margin-bottom:10px;
+}
+
+@media(max-width:768px){
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.gallery{
+grid-template-columns:1fr;
+}
+
+.title{
+font-size:34px;
+}
+
+}
+
+</style>
+
+</head>
+
 <body>
-<h1>${data.title}</h1>
+
+<div class="hero">
+
+${data.logo ? `
+<img
+  src="${data.logo}"
+  class="logo"
+/>
+` : ""}
+
+<h1 class="title">
+${data.title}
+</h1>
+
+<p class="subtitle">
+${data.subtitle}
+</p>
+
+</div>
+
+<div class="content">
+
+<p class="desc">
+${data.description}
+</p>
+
+<div class="grid">
+
+<div class="card rekening">
+
+<h2>
+Rekening Donasi
+</h2>
+
+<br>
+
+<p>
+${data.bank}
+</p>
+
+<p>
+A/N ${data.atasNama}
+</p>
+
+<div class="rekening-number">
+${data.rekening}
+</div>
+
+</div>
+
+${data.qris ? `
+
+<div class="card qris">
+
+<h2>
+📱 Scan QRIS Donasi
+</h2>
+
+<br>
+
+<img src="${data.qris}" />
+
+<p style="margin-top:15px">
+Scan menggunakan aplikasi mobile banking atau e-wallet
+</p>
+
+</div>
+
+` : ""}
+
+</div>
+
+<h2>
+📸 Dokumentasi Kegiatan
+</h2>
+
+<div class="gallery">
+
+${data.galeri1 ? `<img src="${data.galeri1}" />` : ""}
+${data.galeri2 ? `<img src="${data.galeri2}" />` : ""}
+${data.galeri3 ? `<img src="${data.galeri3}" />` : ""}
+
+</div>
+
+<div class="center">
+
+<a
+  class="btn"
+  href="https://wa.me/${data.whatsapp}"
+  target="_blank"
+>
+📱 Hubungi Kami
+</a>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+<h2>
+Jazakumullahu Khairan Katsiran
+</h2>
+
+<p>
+Semoga menjadi amal jariyah yang terus mengalir
+</p>
+
+<br>
+
+<p>
+📍 Desa Awassagara, Kec. Cikelet, Garut
+</p>
+
+<p>
+📱 ${data.whatsapp}
+</p>
+
+<p>
+🌐 Powered by Creative One
+</p>
+
+</div>
+
 </body>
 </html>
 `;
@@ -411,10 +695,13 @@ const generateAIPage = () => {
 
     const url = URL.createObjectURL(blob);
 
-    const link = document.createElement("a");
+    const link =
+      document.createElement("a");
 
     link.href = url;
-    link.download = "landing-page.html";
+
+    link.download =
+      "landing-page.html";
 
     link.click();
 
@@ -424,9 +711,7 @@ const generateAIPage = () => {
 >
   📥 Export HTML
 </button>
-
-      </div>
-
+    </div>
       {/* PREVIEW */}
       <LandingPagePreview data={data} />
 
