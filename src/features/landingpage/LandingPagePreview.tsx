@@ -12,7 +12,16 @@ const progress = Math.round(
     Number(data.targetDonasi || 1)) *
     100
 );
-
+const daysLeft = data.eventDate
+  ? Math.max(
+      0,
+      Math.ceil(
+        (new Date(data.eventDate).getTime() -
+          new Date().getTime()) /
+          (1000 * 60 * 60 * 24)
+      )
+    )
+  : null;
 return (
   <div className="bg-white rounded-2xl overflow-hidden shadow-xl">
 
@@ -42,13 +51,19 @@ return (
           <p className="uppercase tracking-[5px] text-yellow-300 font-bold mb-3">
             Yayasan Pendidikan & Sosial
           </p>
+         
+         {daysLeft !== null && (
+  <div className="inline-block bg-yellow-400 text-black font-bold px-5 py-2 rounded-full mb-4 shadow-lg">
+    ⏳ {daysLeft} Hari Lagi
+  </div>
+)} 
 
           {data.quote && (
             <div className="mb-4 px-5 py-2 bg-yellow-400/90 text-black font-bold rounded-full shadow-lg">
               ✨ {data.quote}
             </div>
           )}
-
+           
           <h1 className="text-5xl font-bold drop-shadow-2xl">
             {data.title}
           </h1>
@@ -274,7 +289,6 @@ return (
         </a>
 
       </div>
-
       {/* FOOTER */}
 
       <div className="bg-green-900 text-white p-8 text-center rounded-2xl mt-10">

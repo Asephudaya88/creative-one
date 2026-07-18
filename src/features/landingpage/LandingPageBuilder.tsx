@@ -28,6 +28,8 @@ export default function LandingPageBuilder() {
   galeri3: "",
   
   buttonText: "Hubungi Kami",
+  
+  eventDate: "",
 
   theme: "green",
 aiMode: true,
@@ -140,7 +142,7 @@ const generateAIPage = () => {
         <label className="block text-sm mb-2">
           Nomor WhatsApp
         </label>
-
+           
         <input
           value={data.whatsapp}
           onChange={(e) =>
@@ -152,6 +154,21 @@ const generateAIPage = () => {
           className="w-full p-3 rounded-xl mb-4 bg-white text-black border"
           placeholder="628xxxxxxxxxx"
         />
+        <label className="block text-sm mb-2 mt-4">
+  Tanggal Event
+</label>
+
+<input
+  type="date"
+  value={data.eventDate || ""}
+  onChange={(e) =>
+    setData({
+      ...data,
+      eventDate: e.target.value,
+    })
+  }
+  className="w-full p-3 rounded-xl text-black"
+/>
 
         <label className="block text-sm mb-2">
           Upload Logo

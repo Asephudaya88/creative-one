@@ -36,5 +36,8 @@ export interface LandingPageData {
   category?: string;
   heroTitle?: string;
 
+  eventDate?: string;
+
   theme: string;
+  
 }
